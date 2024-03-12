@@ -12,7 +12,7 @@ In der Tabelle:
   
 Menü-Taste | Funktion  
 ------------ | -------------  
-🔎 Bearbeiten | Vertikale Anordnung der Felder der gewählten Zeile, Felder sind hier editierbar  
+☰ Bearbeiten | Vertikale Anordnung der Felder der gewählten Zeile, Felder sind hier editierbar  
 ♒ Vorschau | Vertikale Anordnung der Felder der gewählten Zeile, Felder sind hier editierbar 
 📂 Tabelle | "als Text" bearbeiten, andere Tabelle (Datei) wählen  
 🔗 Anhang (Dateien)| Externe Apps (Dateimanager) im Ordner der Anhänge aufrufen  

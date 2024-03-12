@@ -257,7 +257,7 @@ mainGui(){
   AttachmentMenu := attachmentMenuBuild(AttachmentMenu)
   
   mainMenu := MenuBar()
-  mainMenu.Add("☰" menuItem1, rowEdit)
+  mainMenu.Add("📖" menuItem1, rowEdit)
   mainMenu.Add("♒" menuItem2, rowPreview)
   mainMenu.Add("📂" menuItem3, TableMenu)
   mainMenu.Add("🔗" menuItem4, AttachmentMenu)

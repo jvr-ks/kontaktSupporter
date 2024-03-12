@@ -3,4 +3,4 @@ Test2¦xy@xyz.de¦cc@xy.de¦°Gruppe1¦test & other¦TestData3.odt¦TEST\2024¦1
 Test3¦xy@xyz.de¦¦bcc¦°t3¦TestData1.txt¦Anhang.txt¦1¦bcc
 Mahnung 27896¦schuldner@saeumig.de¦¦¦Letzte Mahnung! 😖😖😖¦Mahnung27896.txt¦¦1¦Letzte Mahnung! 😖😖😖
 Text-Makros¦xy@xy.de¦¦¦¦makrotest¦¦0¦Datei "makrotest.txt":¬¬Vordefinierte Text-Makos sind bis jetzt:¬¬\#dl -> Datum lang: #dl¬¬\#d  -> Datum kurz: #d¬¬\#u  -> Uhrzeit: #u¬¬¬Weitere folgen nach Bedarf!
-NEU!¦xy@xy.de¦¦¦¦makrotest.txt¦test¦0¦
+NEU!¦xy@xy.de¦¦¦¦a2.txt¦test¦0¦

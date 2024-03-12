@@ -16,10 +16,10 @@ rowEdit(*){
       guiRowEdit.SetFont("S" . fontsize, fontName)
       
       ContentMenu := Menu()
-      ContentMenu.Add("Datei öffnen", editBodyTextFile)
-      ContentMenu.Add("Datei auswählen", selectBodyTextFile)
+      ContentMenu.Add("Datei öffnen (bearbeiten)", editBodyTextFile)
+      ContentMenu.Add("Neue Datei aus Vorlage erstellen", createBodyTextFileFromProto)
+      ContentMenu.Add("Vorhandene Datei auswählen", selectBodyTextFile)
       ContentMenu.Add("Neue Datei erstellen", createBodyTextFile)
-      ContentMenu.Add("Neue Datei aus Vorlage", createBodyTextFileFromProto)
       ContentMenu.Add("Ordner öffnen", openBodyFileFolder)
       ContentMenu.Add("♒ Vorschau", rowPreview)
 
@@ -27,9 +27,9 @@ rowEdit(*){
       AttachmentMenuRE := attachmentMenuBuildRowEdit(AttachmentMenuRE)
   
       rowEditMenu := MenuBar()
-      rowEditMenu.Add("🔎" "Inhalt", ContentMenu)
+      rowEditMenu.Add("☰" "Inhalt", ContentMenu)
       rowEditMenu.Add("🔗" "Anhang", AttachmentMenuRE)
-      rowEditMenu.Add("☰→" "Bearbeiten schließen", guiRowEditClose)
+      rowEditMenu.Add("📖→" "Bearbeiten schließen", guiRowEditClose)
       rowEditMenu.Add("🗙" "kontaktSupporter beenden", exit)
 
       
@@ -60,15 +60,13 @@ rowEdit(*){
       
       guiRowEdit.Add("Text", "x" clientTopX)
       
-      guiRowEdit.Add("Text", " x" clientTopX, "🔎 Inhalt:`n(Dateiname)")
+      guiRowEdit.Add("Text", " x" clientTopX, "☰ Inhalt:`n(Dateiname)")
       guiRowEdit_Edit6 := guiRowEdit.Add("Edit", "readonly r2 w400 vCol6 xs yp" , bodyFileNameRaw)
       
       guiRowEdit.Add("Text", "x" clientTopX, "🔗 Anhang: ")
       guiRowEdit_Edit7 := guiRowEdit.Add("Edit", "r2 w400 vCol7 xs yp+0" , attachmentRaw)
       guiRowEdit_Edit7.OnEvent("LoseFocus", rowEditSave , 1)
       
-      ; guiRowEdit.Add("Text", "x+m yp+0", "Ordner öffnen:`n(Menü -> Anhang)")
-      ; guiRowEdit.Add("Text", "x" clientTopX, "Anhang effektiv: ")
       guiRowEdit_Edit7a := guiRowEdit.Add("Edit", "readonly r2 w400 xs yp+0", attachment)
       
       guiRowEdit.Add("Text", "x" clientTopX)
@@ -168,8 +166,12 @@ selectBodyTextFile(*){
     
     selectedFile := pathToRelativ(selectedFile, bodyFilePathInUse)
     
-    guiRowEdit_Edit6.Value := selectedFile
-    rowEditSave()
+    if (selectedFile != ""){
+      guiRowEdit_Edit6.Value := selectedFile
+      rowEditSave()
+    } else {
+      showHintColored("Abgebrochen!")
+    }
   }
 }
 ;--------------------------- selectAttachmentFile ---------------------------
