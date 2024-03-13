@@ -236,7 +236,6 @@ pToken := Gdip_Startup()
 If (!pToken) {
   MsgBox "Gdiplus konnte nicht gestartet werden, Bilderdarstellung ist eingeschränkt!"
 }
-OnExit(exit)
 
 return
 

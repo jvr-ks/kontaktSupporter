@@ -207,7 +207,8 @@ exit(*){
   OnMessage 0x03, moveEventSwitch, 0
   OnMessage 0x200, WM_MOUSEMOVED, 0
   
-  Gdip_Shutdown(pToken)
+  if (pToken)
+    Gdip_Shutdown(pToken)
   
   voiceIsSpeaker := 1
   voiceIsSpeed := 2 ; -10 .. +10
