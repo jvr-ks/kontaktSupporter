@@ -207,12 +207,16 @@ exit(*){
   OnMessage 0x03, moveEventSwitch, 0
   OnMessage 0x200, WM_MOUSEMOVED, 0
   
+  Gdip_Shutdown(pToken)
+  
   voiceIsSpeaker := 1
   voiceIsSpeed := 2 ; -10 .. +10
   sp := "<speak version='1.0' xmlns='http://www.w3.org/2001/10/synthesis' xml:lang='de-DE'>"
   sp .= "Vielen Dank für die Verwendung von kontaktsupporter"
   sp .= "</speak>"
   speak(sp)
+  
+  sleep 1000
   
   ExitApp
 }

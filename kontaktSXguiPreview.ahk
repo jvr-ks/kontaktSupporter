@@ -127,7 +127,6 @@ guiPreview_Close(*){
     displayPreview := 0
     if (IsSet(guiPreview))
       guiPreview.Hide()
-
   }
 }
 ;-------------------------------- sci_Change --------------------------------
@@ -251,26 +250,58 @@ generatePreviewParam(){
 ;------------------------------- imagePreview -------------------------------
 imagePreview(){
   global
-  local ext, guiImagePreview
+  local ext, guiImagePreview, deltaX, deltaY, pBitmap, originalWidth, originalHeight, ratio, newWidth, newHeight
+  local G, hbm, hdc, obm
   
   if (!imagePreviewIsVisible){
     if (attachment != ""){
       ext := extractExtension(extractFileName(attachment))
       if (ext = ".png" || ext = ".jpg" || ext = ".gif"){
-        guiImagePreview := Gui("+Resize", attachment)
-        
-        guiImagePreview.Add("ActiveX", Format("w{1} h{2}", A_ScreenWidth - 28, A_ScreenHeight - 28), "mshtml:<img src='" attachment "' />")
-        
-        ; previewImage := guiImagePreview.Add("Picture")
-        ; previewImage.Value := Format("*w{1} *h{2} {3}", A_ScreenWidth - 28, -1, attachment)
-        
-        ; previewImage.Title := extractFileName(attachment)
-        
-        
-        guiImagePreview.Show("xCenter y0 AutoSize")
-        
-        imagePreviewIsVisible := 1
+        guiImagePreview := Gui("+toolwindow +AlwaysOnTop", attachment)
         guiImagePreview.OnEvent("Close", guiImagePreview_Close)
+        
+        If (!pToken) {
+          guiImagePreview.Add("ActiveX", Format("w{1} h{2}", A_ScreenWidth - 30, A_ScreenHeight - 30), "mshtml:<img src='" attachment "' />")
+        } else {
+          ; GDI
+          pBitmap := Gdip_CreateBitmapFromFile(attachment)
+          If (!pBitmap){
+            msgbox("Datei " attachment " konnte nicht geladen werden!", " Fehler aufgetreten!", "Icon!")
+            return
+          }
+          previewImage := guiImagePreview.Add("Picture")
+          ;previewImage.Value := Format("*w{1} *h{2} {3}", A_ScreenWidth, -1, attachment)
+                  
+          pBitmap := Gdip_CreateBitmapFromFile(attachment)
+          newWidth := Gdip_GetImageWidth(pBitmap)
+          newHeight := Gdip_GetImageHeight(pBitmap)
+
+          sizeW := A_ScreenWidth - 30
+          sizeH := A_ScreenHeight - 30
+          if (newWidth > sizeW || newHeight > sizeH){
+            resizeFactor := Min(sizeW/newWidth, sizeH/newHeight) 
+                    
+            PBitmapResized := Gdip_CreateBitmap(Round(newWidth * resizeFactor), Round(newHeight * resizeFactor))
+            G := Gdip_GraphicsFromImage(pBitmapResized)
+            Gdip_DrawImage(G, pBitmap, 0, 0, Round(newWidth * resizeFactor), Round(newHeight * resizeFactor), 0, 0, newWidth, newHeight)
+
+            hCRBitmap := Gdip_CreateHBITMAPFromBitmap(pBitmapResized)
+
+            previewImage.Value := "HBITMAP:*" hCRBitmap
+
+            Gdip_DeleteGraphics(G)
+            Gdip_DisposeImage(PBitmapResized)
+            Gdip_DisposeImage(pBitmap)
+            DeleteObject(hCRBitmap)
+          } else {
+            hCRBitmap := Gdip_CreateHBITMAPFromBitmap(pBitmap)
+            previewImage.Value := "HBITMAP:*" hCRBitmap
+            Gdip_DisposeImage(pBitmap)
+            DeleteObject(hCRBitmap)
+          }
+      }
+      imagePreviewIsVisible := 1
+      guiImagePreview.Show("autosize center")
       }
     }
   }

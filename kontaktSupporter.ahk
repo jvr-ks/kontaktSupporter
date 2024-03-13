@@ -27,6 +27,8 @@
 #Warn
 #SingleInstance force
 
+#DllLoad "*i C:\Windows\System32\GdiPlus.dll"
+
 Fileencoding "UTF-8-RAW"
 
 #Include kontaktSXinsert.ahk
@@ -36,6 +38,7 @@ Fileencoding "UTF-8-RAW"
 #Include kontaktSXhelper.ahk
 #Include kontaktSXScintilla2.ahk
 #Include kontaktSXguiPreview.ahk
+#Include lib\Gdip_All2.ahk
 
 SetTitleMatchMode "2"
 DetectHiddenWindows false
@@ -228,6 +231,13 @@ previewGui()
 HotIfWinActive "ahk_class AutoHotkeyGUI"
 hotkey("F1", quickHelp, "On")
 
+;-------------------------------- Start gdi+ --------------------------------; 
+pToken := Gdip_Startup()
+If (!pToken) {
+  MsgBox "Gdiplus konnte nicht gestartet werden, Bilderdarstellung ist eingeschränkt!"
+}
+OnExit(exit)
+
 return
 
 ;---------------------------------- mainGui ----------------------------------
@@ -399,14 +409,14 @@ LV1_Click(LV1, linenumber){
   currentLineNumber := linenumber
   IniWrite currentLineNumber, configFile, "gui", "currentLineNumber"
   
+  mTbIndexToNamedVari()
+    
   if (GetKeyState("Shift")){
     imagePreview()
     
     return
   }
 
-  mTbIndexToNamedVari()
-  
   if (displayPreview){
     guiPreview_Close()
     guiImagePreviewClose()
