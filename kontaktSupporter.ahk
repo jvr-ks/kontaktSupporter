@@ -223,6 +223,7 @@ readExternalApps()
 setMenuTxt()
 mainGui()
 previewGui()
+imagePreviewGui()
 
 HotIfWinActive "ahk_class AutoHotkeyGUI"
 hotkey("F1", quickHelp, "On")
@@ -406,11 +407,8 @@ LV1_Click(LV1, linenumber){
   
   mTbIndexToNamedVari()
   
-
-if (IsSet(guiImagePreview))
-  guiImagePreview.Destroy()
-  
-  
+  if (IsSet(guiImagePreview))
+    guiImagePreview.Hide()
   
   if (GetKeyState("Shift")){
     imagePreview()

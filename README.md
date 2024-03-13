@@ -391,7 +391,7 @@ Es ist ein Autohotkey V2 Script: "kontaktSupporter.ahk"
 #### Bekannte Fehler / Bugs  
 Fehler / Bug | Type | behoben in Version  
 ------------ | ------------- | -------------  
-Die Bildgrösse stimmt nicht in der Bildvorschau (Umschalt + Klick) |   |
+Die Bildgrösse stimmt nicht in der Bildvorschau (Umschalt + Klick) |  Bug | 0.051
 ~~Bei Inhalt "Datei auswählen" wird ein Unterverzeichnis als absoluter Pfad eingetragen~~ | Bug | 0.043
  
 #### Windows-übliche Hotkeys  
