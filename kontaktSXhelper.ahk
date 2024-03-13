@@ -217,7 +217,7 @@ exit(*){
   sp .= "</speak>"
   speak(sp)
   
-  sleep 1000
+  sleep 500
   
   ExitApp
 }

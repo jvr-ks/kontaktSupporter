@@ -253,7 +253,7 @@ imagePreview(){
   local ext, guiImagePreview, deltaX, deltaY, pBitmap, originalWidth, originalHeight, ratio, newWidth, newHeight
   local G, hbm, hdc, obm
   
-  if (!imagePreviewIsVisible){
+;  if (!imagePreviewIsVisible){
     if (attachment != ""){
       ext := extractExtension(extractFileName(attachment))
       if (ext = ".png" || ext = ".jpg" || ext = ".gif"){
@@ -270,14 +270,13 @@ imagePreview(){
             return
           }
           previewImage := guiImagePreview.Add("Picture")
-          ;previewImage.Value := Format("*w{1} *h{2} {3}", A_ScreenWidth, -1, attachment)
                   
           pBitmap := Gdip_CreateBitmapFromFile(attachment)
           newWidth := Gdip_GetImageWidth(pBitmap)
           newHeight := Gdip_GetImageHeight(pBitmap)
 
-          sizeW := A_ScreenWidth - 30
-          sizeH := A_ScreenHeight - 30
+          sizeW := A_ScreenWidth
+          sizeH := A_ScreenHeight
           if (newWidth > sizeW || newHeight > sizeH){
             resizeFactor := Min(sizeW/newWidth, sizeH/newHeight) 
                     
@@ -299,29 +298,21 @@ imagePreview(){
             Gdip_DisposeImage(pBitmap)
             DeleteObject(hCRBitmap)
           }
-      }
-      imagePreviewIsVisible := 1
+        }
       guiImagePreview.Show("autosize center")
       }
+    imagePreviewIsVisible := 1
     }
-  }
-}
-;--------------------------- guiImagePreviewClose ---------------------------
-guiImagePreviewClose(*){
-  global
-  
-  if (imagePreviewIsVisible){
-    if (IsSet(guiImagePreview))
-      guiImagePreview.Destroy()
-  }
-  imagePreviewIsVisible := 0
+
 }
 ;--------------------------- guiImagePreview_Close ---------------------------
 guiImagePreview_Close(*){
   global
   
-  imagePreviewIsVisible := 0
+  if (IsSet(guiImagePreview))
+    guiImagePreview.Destroy()
 }
+
 ;----------------------------------------------------------------------------
 
 

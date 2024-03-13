@@ -144,19 +144,15 @@ minPosTop := -16
 minHeightMargin := 100
 minWidthMargin := 100
 
-; guiMain := 0
 mainIsVisible := 0
 LV1 := 0
 menuTxtVisible := 1
 
-; guiPreview := 0
 previewIsVisible := 0
 displayPreview := 0
 previewTextMarginHeight := 150
 
-; guiImagePreview := 0
 imagePreviewIsVisible := 0
-displayImagePreview := 0
 
 quickIsHelpVisible := 0
 rowEditIsVisible := 0
@@ -409,7 +405,13 @@ LV1_Click(LV1, linenumber){
   IniWrite currentLineNumber, configFile, "gui", "currentLineNumber"
   
   mTbIndexToNamedVari()
-    
+  
+
+if (IsSet(guiImagePreview))
+  guiImagePreview.Destroy()
+  
+  
+  
   if (GetKeyState("Shift")){
     imagePreview()
     
@@ -418,7 +420,7 @@ LV1_Click(LV1, linenumber){
 
   if (displayPreview){
     guiPreview_Close()
-    guiImagePreviewClose()
+    guiImagePreview_Close()
     rowPreview()
   }
   
