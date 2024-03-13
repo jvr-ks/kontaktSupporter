@@ -42,7 +42,7 @@ attachmentMenuBuild(theMenu){
   
   if (displayPreview){
     theMenu.Add("Datei auswählen", selectAttachmentFile)
-    theMenu.Add("Ordner öffnen (default Filemanager)", openAttachmentFolder)
+    theMenu.Add("Ordner öffnen (mit dem Default-Filemanager)", openAttachmentFolder)
     theMenu.Add()
   }
   theMenu.Add("Externe Apps Liste `"" externalAppsFile "`" bearbeiten", editExternalApps)
@@ -63,20 +63,13 @@ attachmentMenuBuildRowEdit(theMenu){
   global
   
   theMenu.Add("Datei auswählen", selectAttachmentFile)
-  theMenu.Add("Ordner öffnen (default Filemanager)", openAttachmentFolder)
+  theMenu.Add("Ordner öffnen (mit dem Default-Filemanager)", openAttachmentFolder)
   theMenu.Add()
 
   theMenu.Add("Externe Apps Liste `"" externalAppsFile "`" bearbeiten", editExternalApps)
   theMenu.Add()
 
   theMenu := attachmentMenuBuild(theMenu)
-  ; loop externalApps.length {
-    ; theExternalName := externalApps[A_Index][1]
-    ; if (theExternalName == "")
-      ; theMenu.Add()
-    ; else
-      ; theMenu.Add(theExternalName, openExternal.Bind(externalApps[A_Index][1], externalApps[A_Index][2]))
-  ; }
   
   return theMenu
 }

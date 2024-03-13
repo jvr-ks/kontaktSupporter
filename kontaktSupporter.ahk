@@ -63,12 +63,18 @@ if (hasParams != 0){
   }
 }
 ;------------------------------ setup global variables ------------------------------;
+aquot := "`""
+ablank := " " ;"
+aqb := aquot ablank
+abq := ablank aquot
+aqbq := aquot ablank aquot
+  
 baseDirectory := A_ScriptDir
 
 appName := "kontaktSupporter"
 appnameLower := "kontaktsupporter"
 extension := ".exe"
-appVersion := "0.051"
+appVersion := "0.052"
 
 appTitle := appName " " "v" appVersion
 
@@ -1144,6 +1150,7 @@ openExternal(externalAppsName, toRun, *){
   
   d := ""
   found := 0
+
     
   if (!FileExist(toRun)){
     showHintColored("Externe App existiert nicht! (Datei `"" toRun "`")", 5000)
@@ -1156,13 +1163,14 @@ openExternal(externalAppsName, toRun, *){
     if (!found){
       ; attachment can be a folder, or a file
       d := modifyAttachmentsPath(attachment)
-      
-      run toRun " " d
+      msgbox aquot toRun aqbq d aquot
+      run aquot toRun aqbq d aquot
     } else {
       
       toRun := RegExReplace(toRun, "\[(.+?)\]","") ; remove [...]
-      run toRun " `"" extractedExternalPath[1] "`""
+      run aquot toRun aqbq extractedExternalPath[1] aquot
     }
+    return
   }
   
   ; Dopus:
@@ -1170,80 +1178,70 @@ openExternal(externalAppsName, toRun, *){
     found := RegExMatch(externalAppsName, "\[(.+?)\]", &extractedExternalPath, 1)
     if (!found){
       d := modifyAttachmentsPath(attachment)
-      
-      run toRun " /acmd go " d
+      run aquot toRun aqb "/acmd go" abq d aquot
     } else {
       toRun := RegExReplace(toRun, "\[(.+?)\]","") ; remove [...]
       d := modifyAttachmentsPath(attachment)
       
-      run toRun " /acmd go " extractedExternalPath[1] " OPENINLEFT DUALPATH " d
+      run aquot toRun aqb "/acmd go" abq extractedExternalPath[1] aqb "OPENINLEFT DUALPATH" abq d aquot
     }
-  } else {
-    ; Freecommander:
-    if (InStr(externalAppsName, "freecommander")){
-      found := RegExMatch(externalAppsName, "\[(.+?)\]", &extractedExternalPath, 1)
-      if (!found){
-        d := modifyAttachmentsPath(attachment)
-        
-        run toRun " /OPEN " d 
-      } else {
-        toRun := RegExReplace(toRun, "\[(.+?)\]","") ; remove [...]
-        d := modifyAttachmentsPath(attachment)
-        
-        run toRun " /L=" extractedExternalPath[1] " /R=" d
-      }
-    } else {
-      ; multicommander:
-      if (InStr(externalAppsName, "multicommander")){
-        found := RegExMatch(externalAppsName, "\[(.+?)\]", &extractedExternalPath, 1)
-        if (!found){
-          d := modifyAttachmentsPath(attachment)
-          
-          run toRun " /OPEN " d 
-        } else {
-          toRun := RegExReplace(toRun, "\[(.+?)\]","") ; remove [...]
-          d := modifyAttachmentsPath(attachment)
-          
-          run toRun " /L=" extractedExternalPath[1] " /R=" d
-        }
-      } else {
-        ; EmEditor:
-        if (InStr(externalAppsName, "EmEditor")){
-          found := RegExMatch(externalAppsName, "\[(.+?)\]", &extractedExternalPath, 1)
-          if (!found){
-            d := modifyAttachmentsPath(attachment)
-            
-            run toRun " `" " d "`""
-          } else {
-            toRun := RegExReplace(toRun, "\[(.+?)\]","") ; remove [...]
-            d := modifyAttachmentsPath(attachment)
-            msgbox toRun extractedExternalPath[1] " " d 
-            run toRun extractedExternalPath[1] " " d 
-          }
-        }
-      }
-    }
+    return
   }
+  ; Freecommander or multicommander:
+  if (InStr(externalAppsName, "freecommander") || InStr(externalAppsName, "multicommander")){
+    found := RegExMatch(externalAppsName, "\[(.+?)\]", &extractedExternalPath, 1)
+    if (!found){
+      d := modifyAttachmentsPath(attachment)
+      
+      run aquot toRun aqb "/OPEN" abq d aquot
+    } else {
+      toRun := RegExReplace(toRun, "\[(.+?)\]","") ; remove [...]
+      d := modifyAttachmentsPath(attachment)
+      
+      run aquot toRun aqb "/L=" aquot extractedExternalPath[1] aqb "/R=" aquot d aquot
+    }
+    return
+  }
+  ; ACDSee:
+  if (InStr(externalAppsName, "ACDSee")){
+    found := RegExMatch(externalAppsName, "\[(.+?)\]", &extractedExternalPath, 1)
+    if (!found){
+      d := modifyAttachmentsPath(attachment)
+      
+      run  aquot toRun aqbq d aquot
+    } else {
+      toRun := RegExReplace(toRun, "\[(.+?)\]","") ; remove [...]
+      d := modifyAttachmentsPath(attachment)
+      
+      run aquot toRun aqbq extractedExternalPath[1] aqbq d aquot
+    }
+    return
+  }
+  
+  
+  
 }
-;--------------------------- modifyAttachmentsPath ---------------------------
-modifyAttachmentsPath(attachmentLocal := ""){
+;----------------------------------- exit -----------------------------------
+exit(*){
   global
-  local d
   
-  attachmentLocal := RegExReplace(attachmentLocal,"\(.*\)","") ; remove comment
+  OnMessage 0x03, moveEventSwitch, 0
+  OnMessage 0x200, WM_MOUSEMOVED, 0
   
-  d := attachmentsPathInUse
-  if (attachmentLocal != ""){
-    if (InStr(attachmentLocal, ":")){ ; absolute path?
-      d := attachmentLocal ; ignore attachmentsPathInUse in this case
-    } else {
-      d := attachmentsPathInUse "\" attachmentLocal
-    }
-  }
-
-  return d
+  if (pToken)
+    Gdip_Shutdown(pToken)
+  
+  voiceIsSpeaker := 1
+  voiceIsSpeed := 2 ; -10 .. +10
+  sp := "<speak version='1.0' xmlns='http://www.w3.org/2001/10/synthesis' xml:lang='de-DE'>"
+  sp .= "Vielen Dank für die Verwendung von kontaktsupporter"
+  sp .= "</speak>"
+  speak(sp)
+  
+  sleep 500
+  
+  ExitApp
 }
-
 ;----------------------------------------------------------------------------
 
 

@@ -2722,7 +2722,48 @@ setKSLexer(ctl)
     ctl.loading := 1
 }
 
+;------------------------------- setLighTheme -------------------------------
+setLighTheme(ctl) {
+    ; Light theme
 
+  ctl.cust.Caret.LineBack := 0xF6F9FC	; active line (with caret)
+  ctl.cust.Editor.Back := 0xFDFDFD
+
+  ctl.cust.Editor.Fore := 0x000000
+  ctl.cust.Editor.Font := "Consolas"
+  ctl.cust.Editor.Size := 10
+
+  ctl.Style.ClearAll()	; apply style 32
+
+  ctl.cust.Margin.Back := 0xF0F0F0
+  ctl.cust.Margin.Fore := 0x000000
+
+  ctl.cust.Caret.Fore := 0x00FF00
+  ctl.cust.Selection.Back := 0x398FFB
+  ctl.cust.Selection.ForeColor := 0xFFFFFF
+
+  ctl.cust.Brace.Fore := 0x5F6364	; basic brace color
+  ctl.cust.BraceH.Fore := 0x00FF00	; brace color highlight
+  ctl.cust.BraceHBad.Fore := 0xFF0000	; brace color bad light
+  ctl.cust.Punct.Fore := 0xA57F5B
+  ctl.cust.String1.Fore := 0x329C1B	; "" double quoted text
+  ctl.cust.String2.Fore := 0x329C1B	; '' single quoted text
+
+  ctl.cust.Comment1.Fore := 0x7D8B98	; keeping comment color same
+  ctl.cust.Comment2.Fore := 0x7D8B98	; keeping comment color same
+  ctl.cust.Number.Fore := 0xC72A31
+
+  ctl.cust.kw1.Fore := 0x329C1B	; flow - set keyword list colors, kw1 - kw8
+  ctl.cust.kw2.Fore := 0x1049BF	; funcion
+  ctl.cust.kw2.Bold := true	; funcion
+  ctl.cust.kw3.Fore := 0x2390B6	; method
+  ctl.cust.kw3.Bold := true	; funcion
+  ctl.cust.kw4.Fore := 0x3F8CD4	; prop
+  ctl.cust.kw5.Fore := 0xC72A31	; vars
+
+  ctl.cust.kw6.Fore := 0xEC9821	; directives
+  ctl.cust.kw7.Fore := 0x2390B6	; var decl
+}
 
 
 
