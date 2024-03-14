@@ -329,7 +329,9 @@ guiImagePreviewMove(){
 ;--------------------------- guiImagePreview_Close ---------------------------
 guiImagePreview_Close(*){
   global
-  Gdip_DisposeImage(theBitmap)
+  if (theBitmap)
+    Gdip_DisposeImage(theBitmap)
+    
   guiImagePreview.Hide()
   imagePreviewIsVisible := 0
 }
