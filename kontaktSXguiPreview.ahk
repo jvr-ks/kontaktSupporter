@@ -63,17 +63,12 @@ previewGui(){
   
   guiPreview.show(Format("Hide x{1} y{2} w{3} h{4}", guiPreviewPosX, guiPreviewPosY, guiPreviewClientWidth, guiPreviewClientHeight))
   
-  ;WinSetAlwaysOnTop -1, "A"
-  
   guiPreview.OnEvent("Size", guiPreview_Size , 1)
   guiPreview.OnEvent("Close", guiPreview_Close)
   
   guiPreviewHwnd := guiPreview.Hwnd 
-  ; WinMinimize "A" ; trigger size-event
-  ; WinRestore "ahk_id " guiPreviewHwnd
   
   previewIsVisible := 0
-
 }
 ;----------------------------- openImagePreview -----------------------------
 openImagePreview(*){
@@ -83,7 +78,6 @@ openImagePreview(*){
     guiImagePreview_Close()
   } else {
     imagePreviewIsVisible := 1
-    guiImagePreview.Show()
     imagePreview()
   }
 }
@@ -258,6 +252,8 @@ imagePreview(){
         
         resizeGuiImagePreview()
       }
+    } else {
+      guiImagePreview.Hide()
     }
   } else {
     guiImagePreview.Hide()
