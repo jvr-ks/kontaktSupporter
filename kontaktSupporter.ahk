@@ -276,6 +276,7 @@ mainGui(){
   
   ConfigMenu := Menu()
   ConfigMenu.Add("Konfiguration `"" configFile "`" bearbeiten", editConfig)
+  ConfigMenu.Add("Konfiguration (-> BaseDirectory) `"" configFile "`" bearbeiten", editConfigBaseDirectory)
   ConfigMenu.Add("Gesendet `"" logfileName "`"  ansehen", editLogFile)
   ConfigMenu.Add("Externe Apps Liste `"" externalAppsFile "`" bearbeiten", editExternalApps)
   
@@ -1126,6 +1127,24 @@ editLogFile(*){
 }
 ;-------------------------------- editConfig --------------------------------
 editConfig(*){
+  global baseDirectory, configFile
+  local toRun 
+  
+  toRun := configFile
+
+  if (!FileExist(toRun)){
+    FileAppend "", toRun, "`n"
+  }
+  
+  if (FileExist(toRun)){
+    SetTimer wmMouseMoveDelay, -2000
+    run toRun
+  } else {
+    msgbox("Datei `"" toRun "`" nicht gefunden!", "Fehler aufgetreten!", "Icon!")
+  }
+}
+;-------------------------- editConfigBaseDirectory --------------------------
+editConfigBaseDirectory(*){
   global baseDirectory, configFile
   local theFile, toRun 
   
