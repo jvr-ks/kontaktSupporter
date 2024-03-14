@@ -74,7 +74,7 @@ baseDirectory := A_ScriptDir
 appName := "kontaktSupporter"
 appnameLower := "kontaktsupporter"
 extension := ".exe"
-appVersion := "0.052"
+appVersion := "0.053"
 
 appTitle := appName " " "v" appVersion
 

@@ -15,6 +15,9 @@ previewGui(){
   guiPreview := Gui("+OwnDialogs MaximizeBox +Resize + AlwaysOnTop", "Vorschau (keine Änderungen in der Vorschau möglich!)")
   
   guiPreviewMenu := MenuBar()
+  
+  
+  guiPreviewMenu.Add("🖼" "Anhang Vorschau", openImagePreview)
   guiPreviewMenu.Add("♒→" "Vorschau beenden", guiPreview_Close)
   guiPreviewMenu.Add("🗙" "kontaktSupporter beenden ", exit)
   
@@ -71,6 +74,18 @@ previewGui(){
   
   previewIsVisible := 0
 
+}
+;----------------------------- openImagePreview -----------------------------
+openImagePreview(*){
+  global
+  
+  if (imagePreviewIsVisible){
+    guiImagePreview_Close()
+  } else {
+    imagePreviewIsVisible := 1
+    guiImagePreview.Show()
+    imagePreview()
+  }
 }
 ;------------------------------- guiPreview_Size -------------------------------
 guiPreview_Size(theGui, theMinMax, clientWidth, clientHeight,*) {
@@ -320,6 +335,7 @@ guiImagePreview_Close(*){
   global
   Gdip_DisposeImage(theBitmap)
   guiImagePreview.Hide()
+  imagePreviewIsVisible := 0
 }
 ;----------------------------------------------------------------------------
 
