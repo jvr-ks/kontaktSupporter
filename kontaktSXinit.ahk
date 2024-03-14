@@ -38,11 +38,19 @@ readConfig(){
     guiMainClientWidth := iniReadSave("guiMainClientWidth", "gui", guiMainClientWidthDefault)
     guiMainClientHeight := iniReadSave("guiMainClientHeight", "gui", guiMainClientHeightDefault)
     
+    
     guiPreviewPosX := iniReadSave("guiPreviewPosX", "gui", guiPreviewPosXDefault)
     guiPreviewPosY := iniReadSave("guiPreviewPosY", "gui", guiPreviewPosYDefault)
     
     guiPreviewClientWidth := iniReadSave("guiPreviewClientWidth", "gui", guiPreviewClientWidthDefault)
     guiPreviewClientHeight := iniReadSave("guiPreviewClientHeight", "gui", guiPreviewClientHeightDefault)
+    
+    
+    guiImagePreviewPosX := iniReadSave("guiImagePreviewPosX", "gui", guiImagePreviewPosXDefault)
+    guiImagePreviewPosY := iniReadSave("guiImagePreviewPosY", "gui", guiImagePreviewPosYDefault)
+    
+    guiImagePreviewClientWidth := iniReadSave("guiImagePreviewClientWidth", "gui", guiImagePreviewClientWidthDefault)
+    guiImagePreviewClientHeight := iniReadSave("guiImagePreviewClientHeight", "gui", guiImagePreviewClientHeightDefault)
     
   } else {
   FileAppend "
@@ -71,12 +79,16 @@ currentLineNumber=2
 menuTxtVisible=1
 guiMainPosX=0
 guiMainPosY=0
-guiMainClientWidth=800
-guiMainClientHeight=600
+guiMainClientWidth=600
+guiMainClientHeight=200
 guiPreviewPosX=0
 guiPreviewPosY=0
 guiPreviewClientWidth=800
 guiPreviewClientHeight=600
+guiImagePreviewPosX=0
+guiImagePreviewPosY=0
+guiImagePreviewClientWidth=800
+guiImagePreviewClientHeight=600
 )", configFile, "`n"
   
   }
@@ -95,6 +107,13 @@ guiPreviewClientHeight=600
   
   guiPreviewPosX := min(guiPreviewPosX, A_ScreenWidth - minWidthMargin)
   guiPreviewPosY := min(guiPreviewPosY, A_ScreenHeight - minHeightMargin)
+  
+  
+  guiImagePreviewPosX := max(guiImagePreviewPosX, minPosLeft)
+  guiImagePreviewPosY := max(guiImagePreviewPosY, minPosTop)
+  
+  guiImagePreviewPosX := min(guiImagePreviewPosX, A_ScreenWidth - minWidthMargin)
+  guiImagePreviewPosY := min(guiImagePreviewPosY, A_ScreenHeight - minHeightMargin)
 }
 ;-------------------------------- iniReadSave --------------------------------
 iniReadSave(name, section, defaultValue){

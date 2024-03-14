@@ -58,7 +58,7 @@ previewGui(){
     previewText := guiPreview.Add("Edit", "w800 h600 x" clientTopX, "")
   }
   
-  guiPreview.show("Hide x" guiPreviewPosX " y" guiPreviewPosY " w" guiPreviewClientWidth " h" guiPreviewClientHeight)
+  guiPreview.show(Format("Hide x{1} y{2} w{3} h{4}", guiPreviewPosX, guiPreviewPosY, guiPreviewClientWidth, guiPreviewClientHeight))
   
   ;WinSetAlwaysOnTop -1, "A"
   
@@ -208,73 +208,119 @@ generatePreviewParam(){
 ;------------------------------ imagePreviewGui ------------------------------
 imagePreviewGui(){
   global
+  local checked1, checked2, checked3
   
-  guiImagePreview := Gui("+toolwindow +AlwaysOnTop", attachment)
-  guiImagePreview.Show("Hide center")
+  guiImagePreview := Gui("+AlwaysOnTop +resize", attachment)
+  guiImagePreviewEdit1 := guiImagePreview.Add("Edit","readonly x2 w200 r1")
+  previewImage := guiImagePreview.Add("Picture","x2")
+  
+  guiImagePreview.show(Format("Hide x{1} y{2} w{3} h{4}", guiImagePreviewPosX, guiImagePreviewPosY, guiImagePreviewClientWidth, guiImagePreviewClientHeight))
+  guiImagePreviewHWND := guiImagePreview.hwnd
+  
+  guiImagePreview.OnEvent("Size", guiImagePreview_Size , 1)
   guiImagePreview.OnEvent("Close", guiImagePreview_Close)
 }
 ;------------------------------- imagePreview -------------------------------
 imagePreview(){
   global
-  local ext, deltaX, deltaY, pBitmap, originalWidth, originalHeight, ratio, newWidth, newHeight
-  local G, hbm, hdc, obm
+  local ext
   
   if (attachment != ""){
     ext := extractExtension(extractFileName(attachment))
     if (ext = ".png" || ext = ".jpg" || ext = ".gif"){
-
-      If (!pToken) {
-        guiImagePreview.Add("ActiveX", Format("w{1} h{2}", A_ScreenWidth - 30, A_ScreenHeight - 30), "mshtml:<img src='" attachment "' />")
+      if (!pToken) {
+        msgbox("GDI funktioniert leider nicht", "Fehler aufgetreten!", "Icon!")
       } else {
-        ; GDI
-        pBitmap := Gdip_CreateBitmapFromFile(attachment)
-        If (!pBitmap){
+        theBitmap := Gdip_CreateBitmapFromFile(attachment)
+        
+        if (!theBitmap){
           msgbox("Datei " attachment " konnte nicht geladen werden!", " Fehler aufgetreten!", "Icon!")
           return
         }
-        previewImage := guiImagePreview.Add("Picture")
-                
-        pBitmap := Gdip_CreateBitmapFromFile(attachment)
-        newWidth := Gdip_GetImageWidth(pBitmap)
-        newHeight := Gdip_GetImageHeight(pBitmap)
-
-        sizeW := A_ScreenWidth
-        sizeH := A_ScreenHeight
-        if (newWidth > sizeW || newHeight > sizeH){
-          resizeFactor := Min(sizeW/newWidth, sizeH/newHeight) 
-                  
-          PBitmapResized := Gdip_CreateBitmap(Round(newWidth * resizeFactor), Round(newHeight * resizeFactor))
-          G := Gdip_GraphicsFromImage(pBitmapResized)
-          Gdip_DrawImage(G, pBitmap, 0, 0, Round(newWidth * resizeFactor), Round(newHeight * resizeFactor), 0, 0, newWidth, newHeight)
-
-          hCRBitmap := Gdip_CreateHBITMAPFromBitmap(pBitmapResized)
-
-          previewImage.Value := "HBITMAP:*" hCRBitmap
-
-          Gdip_DeleteGraphics(G)
-          Gdip_DisposeImage(PBitmapResized)
-          Gdip_DisposeImage(pBitmap)
-          DeleteObject(hCRBitmap)
-        } else {
-          hCRBitmap := Gdip_CreateHBITMAPFromBitmap(pBitmap)
-          previewImage.Value := "HBITMAP:*" hCRBitmap
-          Gdip_DisposeImage(pBitmap)
-          DeleteObject(hCRBitmap)
-        }
+        guiImagePreview.Show()
+        imageWidth := Gdip_GetImageWidth(theBitmap)
+        imageHeight := Gdip_GetImageHeight(theBitmap)
+        
+        resizeGuiImagePreview()
       }
-    guiImagePreview.Show("autosize")
     }
   } else {
     guiImagePreview.Hide()
   }
 }
+;--------------------------- resizeGuiImagePreview ---------------------------
+resizeGuiImagePreview(){
+  global
+  local resizeFactor, newWidth, newHeight, hCRBitmap
+  local gPointer, hbm, hdc, obm
+  
+  if (!theBitmap){
+    return
+  }
+  
+  border := 10
+  resizeFactor := dpiCorrect * min(guiImagePreviewClientWidth/imageWidth, guiImagePreviewClientHeight/imageHeight)
+  newWidth :=  Round(imageWidth * resizeFactor)
+  newHeight := Round(imageHeight * resizeFactor)
+  
+  newBitMap := Gdip_CreateBitmap(newWidth, newHeight)
+  gPointer := Gdip_GraphicsFromImage(newBitMap) ; a pointer
+  Gdip_SetInterpolationMode(gPointer, 7)
+  Gdip_DrawImage(gPointer, theBitmap, 0, 0, newWidth, newHeight, 0, 0, imageWidth, imageHeight)
+
+  previewImage.Value := ""
+  hCRBitmap := Gdip_CreateHBITMAPFromBitmap(newBitMap)
+
+  previewImage.Value := "HBITMAP:*" hCRBitmap
+
+  Gdip_DeleteGraphics(gPointer)
+  Gdip_DisposeImage(newBitMap)
+  DeleteObject(hCRBitmap)
+  
+  msg := "Bildbreite: " imageWidth ", Bildhöhe: " imageHeight
+    
+  guiImagePreviewEdit1.Value := msg
+}
+;--------------------------- guiImagePreview_Size ---------------------------
+guiImagePreview_Size(theGui, theMinMax, clientWidth, clientHeight,*) {
+  global 
+  
+  if (theMinMax = -1)
+      return
+  
+  guiImagePreviewClientWidth := clientWidth
+  guiImagePreviewClientHeight := clientHeight
+  
+  IniWrite clientWidth, configFile, "gui", "guiImagePreviewClientWidth"
+  IniWrite clientHeight, configFile, "gui", "guiImagePreviewClientHeight"
+  
+  previewImage.Move(,, guiImagePreviewClientWidth - 10, guiImagePreviewClientHeight - 10)
+  
+  resizeGuiImagePreview()
+}
+;---------------------------- guiImagePreviewMove ----------------------------
+guiImagePreviewMove(){
+  global
+  local posX, posY
+  
+  if (IsSet(guiImagePreview)){
+    guiImagePreview.GetPos(&posX, &posY)
+  
+    if (posX != 0 && posY != 0){  
+      guiImagePreviewPosX := max(coordsAppToScreen(posX), minPosLeft)
+      guiImagePreviewPosY := max(coordsAppToScreen(posY), minPosTop)
+
+      IniWrite guiImagePreviewPosX, configFile, "gui", "guiImagePreviewPosX"
+      IniWrite guiImagePreviewPosY, configFile, "gui", "guiImagePreviewPosY"
+    }
+  }
+}
 ;--------------------------- guiImagePreview_Close ---------------------------
 guiImagePreview_Close(*){
   global
-  
-    guiImagePreview.Hide()
+  Gdip_DisposeImage(theBitmap)
+  guiImagePreview.Hide()
 }
-
 ;----------------------------------------------------------------------------
 
 

@@ -174,12 +174,12 @@ class Scintilla extends Gui.Custom {
         
         scint_path := "scintilla.dll" ; Set this as needed.
         
-        If !(this.hModule := DllCall("LoadLibrary", "Str", scint_path, "UPtr")) {    ; load dll, make sure it works
+        if !(this.hModule := DllCall("LoadLibrary", "Str", scint_path, "UPtr")) {    ; load dll, make sure it works
             MsgBox "Scintilla DLL not found.`n`nModify the path to the appropriate location for your script.`n" 
             ExitApp
         }
         
-        If !DllCall("LoadLibrary", "Str", "kslexer.dll", "UPtr") {
+        if !DllCall("LoadLibrary", "Str", "kslexer.dll", "UPtr") {
             Msgbox "kslexer.dll not found."
             ExitApp
         }
@@ -187,7 +187,7 @@ class Scintilla extends Gui.Custom {
         ; Scintilla.scint_base.Prototype._sms := Scintilla.scint_base.Prototype.__sms_slow
         
         For propScintilla in Scintilla.scint_base.prototype.OwnProps() ; attach utility methods to prototype
-            If !(SubStr(propScintilla,1,2) = "__") And (SubStr(propScintilla,1,1) = "_")
+            if !(SubStr(propScintilla,1,2) = "__") And (SubStr(propScintilla,1,1) = "_")
                 this.Prototype.%propScintilla% := Scintilla.scint_base.prototype.%propScintilla%
         
     }
@@ -199,11 +199,11 @@ class Scintilla extends Gui.Custom {
         opt_arr := StrSplit(sOptions," ")
         sOptions := ""
         For i, str in opt_arr {
-            If RegExMatch(str, "DefaultOpts?")
+            if RegExMatch(str, "DefaultOpts?")
                 DefaultOpt := true
-            Else If (str = "DefaultTheme")
+            Else if (str = "DefaultTheme")
                 DefaultTheme := true
-            Else If (str = "LightTheme")
+            Else if (str = "LightTheme")
                 LightTheme := true
             Else
                 sOptions .= (sOptions?" ":"") str
@@ -273,11 +273,11 @@ class Scintilla extends Gui.Custom {
         ; These 2 methods are not required.  These only apply the settings that I prefer to use with
         ; Scintilla.  You can modify the code in these methods to your requirements.
         ; ==========================================================================================
-        If DefaultOpt
+        if DefaultOpt
             ctl.DefaultOpt()
-        If DefaultTheme
+        if DefaultTheme
             ctl.DefaultTheme()
-        If LightTheme
+        if LightTheme
             ctl.LightTheme()
         
         return ctl
@@ -330,14 +330,14 @@ class Scintilla extends Gui.Custom {
     }
     Static Lookup(member, in_value) {
         For propScintilla, valueScintilla in this.%member%.OwnProps()
-            If (valueScintilla = in_value)
+            if (valueScintilla = in_value)
                 return propScintilla
         return ""
     }
     Static GetFlags(member, in_value, all:=false) {
         out_str := ""
         For propScintilla, valueScintilla in Scintilla.%member%.OwnProps()
-            If (valueScintilla & in_value)
+            if (valueScintilla & in_value)
                 out_str .= (out_str?" ":"") propScintilla
         return out_str
     }
@@ -359,18 +359,18 @@ class Scintilla extends Gui.Custom {
         ; or performance in the user callback manually.
         ; =========================================================================
         
-        If (this.AutoSizeNumberMargin)
+        if (this.AutoSizeNumberMargin)
             this.MarginWidth(0, 33, scn) ; number margin 0, with default style 33
         
-        If (this.CustomSyntaxHighlighting) {
+        if (this.CustomSyntaxHighlighting) {
             
             data := this.scn_data(scn) ; prep data for DLL calls
             ; wordList := this.makeWordLists()
             
-            If (scn.modType & modType.InsertText)                           ; Captures text editing and scrolling
+            if (scn.modType & modType.InsertText)                           ; Captures text editing and scrolling
                 || (event = "UpdateUI" && (scn.updated=4 || scn.updated=8)) {
             
-                If (event = "Modified") && (scn.length > 1) { ; && (scn.linesAdded) { ; paste or document load operation
+                if (event = "Modified") && (scn.length > 1) { ; && (scn.linesAdded) { ; paste or document load operation
                     ticks := A_TickCount
                     result := this.ChunkColoring(scn, data, this._wordList)
                     dbg_scintilla( "ChunkColoring Seconds:  " (A_TickCount - ticks) / 1000 " / result: " result)
@@ -384,12 +384,12 @@ class Scintilla extends Gui.Custom {
                 
             }
             
-            Else If (scn.modType & modType.BeforeDelete)
+            Else if (scn.modType & modType.BeforeDelete)
                 this.DeleteRoutine(scn, data)
             Else if (scn.modType & modType.DeleteText)
                 this.ChunkColoring(scn, data, this._wordList) ; redo coloring after delete
         
-            If (scn.wmmsg_txt = "StyleNeeded") {
+            if (scn.wmmsg_txt = "StyleNeeded") {
                 ; ticks := A_TickCount
                 this.Pacify() ; pacify the StyleNeeded bit by styling the last char in the doc
                 ; dbg_scintilla( "StyleNeeded Seconds:  " (A_TickCount - ticks) / 1000 " / Last: " this.Styling.Last)
@@ -401,14 +401,14 @@ class Scintilla extends Gui.Custom {
         ; User callback
         ; =========================================================================
         
-        If (this.callback)
+        if (this.callback)
             f := this.callback(scn)
     }
     
     MarginWidth(margin:=0, style:=33, scn:="") {
         Static modType := Scintilla.sc_modType
         
-        If !scn || !((scn.wmmsg_txt = "Modified")
+        if !scn || !((scn.wmmsg_txt = "Modified")
           && (scn.modType & modType.DeleteText || scn.modType & modType.InsertText))
             return
         
@@ -732,7 +732,7 @@ class Scintilla extends Gui.Custom {
     CharIndex {
         get => this._sms(0xA96)
         set {
-            If (value != this._CharIndex) {
+            if (value != this._CharIndex) {
                 this._sms(0xA98, this._CharIndex)               ; SCI_RELEASELINECHARACTERINDEX
                 this._sms(0xA97, (this._CharIndex := value))    ; SCI_ALLOCATELINECHARACTERINDEX
             }
@@ -1116,16 +1116,16 @@ class Scintilla extends Gui.Custom {
     UseDirect {
         get => this._UseDirect
         set {
-            If (!Scintilla.DirectFunc And value=true) ; store in Scintilla class, once per module instance
+            if (!Scintilla.DirectFunc And value=true) ; store in Scintilla class, once per module instance
                 Scintilla.DirectFunc := SendMessage(0x888, 0, 0, this.hwnd) ; SCI_GETDIRECTFUNCTION
             
-            If (!Scintilla.DirectStatusFunc And value=true)
+            if (!Scintilla.DirectStatusFunc And value=true)
                 Scintilla.DirectStatusFunc := SendMessage(0xAD4, 0, 0, this.hwnd) ; SCI_GETDIRECTSTATUSFUNCTION
             
-            If (!this.DirectPtr And value=true) ; store in ctl, call once per control
+            if (!this.DirectPtr And value=true) ; store in ctl, call once per control
                 this._DirectPtr  := SendMessage(0x889, 0, 0, this.hwnd) ; SCI_GETDIRECTPOINTER
             
-            ; If (value)
+            ; if (value)
                 ; Scintilla.scint_base.Prototype._sms := Scintilla.scint_base.Prototype.__sms_slow
             ; else
                 ; Scintilla.scint_base.Prototype._sms := Scintilla.scint_base.Prototype.__sms_fast
@@ -1493,13 +1493,13 @@ class Scintilla extends Gui.Custom {
             set => this._sms(0x8C6, this.ID, value) ; SCI_SETMARGINSENSITIVEN
         }
         Style(line, style:="") {                        ; n = line, in/out = int
-            If (style="")
+            if (style="")
                 return this._sms(0x9E5, line)           ; SCI_MARGINGETSTYLE
             Else
                 return this._sms(0x9E4, line, style)    ; SCI_MARGINSETSTYLE
         }
         Text(line, text:=" ") {                         ; n = line, in/out = string
-            If (text=" ")
+            if (text=" ")
                 return this._GetStr(0x9E3, line)        ; SCI_MARGINGETTEXT
             Else
                 return this._PutStr(0x9E2, line, text)  ; SCI_MARGINSETTEXT
@@ -1539,7 +1539,7 @@ class Scintilla extends Gui.Custom {
         Back {
             get => (0xFF000000 & this._BackColor) ? Format("0x{:08X}", this._BackColor) : Format("0x{:06X}", this._BackColor)
             set {
-                If (0xFF000000 & value)
+                if (0xFF000000 & value)
                     this._sms(0x8F7, this.num, this._RGB_BGR(this._ForeColor := value)) ; SCI_MARKERSETBACKTRANSLUCENT
                 Else
                     this._sms(0x7FA, this.num, this._RGB_BGR(this._ForeColor := value)) ; SCI_MARKERSETBACK
@@ -1548,7 +1548,7 @@ class Scintilla extends Gui.Custom {
         BackSelected {
             get => (0xFF000000 & this._BackSelectedColor) ? Format("0x{:08X}", this._BackSelectedColor) : Format("0x{:06X}", this._BackSelectedColor)
             set {
-                If (0xFF000000 & value)
+                if (0xFF000000 & value)
                     this._sms(0x8F8, this.num, this._RGB_BGR(this._ForeColor := value)) ; SCI_MARKERSETBACKSELECTEDTRANSLUCENT
                 Else
                     this._sms(0x8F4, this.num, this._RGB_BGR(this._ForeColor := value)) ; SCI_MARKERSETBACKSELECTED
@@ -1566,7 +1566,7 @@ class Scintilla extends Gui.Custom {
         Fore {
             get => (0xFF000000 & this._ForeColor) ? Format("0x{:08X}", this._ForeColor) : Format("0x{:06X}", this._ForeColor)
             set {
-                If (0xFF000000 & value)
+                if (0xFF000000 & value)
                     this._sms(0x8F6, this.num, this._RGB_BGR(this._ForeColor := value)) ; SCI_MARKERSETFORETRANSLUCENT
                 Else
                     this._sms(0x7F9, this.num, this._RGB_BGR(this._ForeColor := value)) ; SCI_MARKERSETFORE
@@ -1658,13 +1658,13 @@ class Scintilla extends Gui.Custom {
             set => this._sms(0x9AE, value)  ; SCI_SETSELALPHA
         }
         AnchorPos(pos:="", sel:=0) {                ; sel is 0-based
-            If (pos="")
+            if (pos="")
                 return this._sms(0xA13, sel)        ; SCI_GETSELECTIONNANCHOR (where selection started, could be on the right)
             Else
                 return this._sms(0xA12, sel, pos)   ; SCI_SETSELECTIONNANCHOR (modifies selection)
         }
         AnchorVS(pos:="", sel:=0) {                 ; sel is 0-based
-            If (pos="")
+            if (pos="")
                 return this._sms(0xA17, sel)        ; SCI_GETSELECTIONNANCHORVIRTUALSPACE
             Else
                 return this._sms(0xA16, sel, pos)   ; SCI_SETSELECTIONNANCHORVIRTUALSPACE
@@ -1682,13 +1682,13 @@ class Scintilla extends Gui.Custom {
             set => this._sms(0x814, (this._BackEnabled := value), this._RGB_BGR(this._BackColor)) ; SCI_SETSELBACK
         }
         CaretPos(pos:="", sel:=0) {                 
-            If (pos="")                             
+            if (pos="")                             
                 return this._sms(0xA11, sel)        ; SCI_GETSELECTIONNCARET (caret is were selection ends, may be on left)
             Else
                 return this._sms(0xA10, sel, pos)   ; SCI_SETSELECTIONNCARET (move carat, modifies selection)
         }
         CaretVS(pos:="", sel:=0) {                  ; sel is 0-based
-            If (pos="")
+            if (pos="")
                 return this._sms(0xA15, sel)        ; SCI_GETSELECTIONNCARETVIRTUALSPACE
             Else
                 return this._sms(0xA14, sel, pos)   ; SCI_SETSELECTIONNCARETVIRTUALSPACE
@@ -1703,7 +1703,7 @@ class Scintilla extends Gui.Custom {
             return this._sms(0xA6F, sel_num) ; SCI_DROPSELECTIONN
         }
         End(pos:="", sel:=0) {                    ; end of selection is always on the right
-            If (pos="")
+            if (pos="")
                 return this._sms(0xA1B, sel)      ; SCI_GETSELECTIONNEND
             Else
                 return this._sms(0xA1A, sel, pos) ; SCI_SETSELECTIONNEND
@@ -1737,7 +1737,7 @@ class Scintilla extends Gui.Custom {
         GetAll() {      ; For multi-select, gets selection in order, with CRLF breaks between selections.
             _str := ""  ; For rectangle select, ALWAYS gets top line first.
             
-            If (this.IsRect) And (this.RectAnchor > this.RectCaret) {
+            if (this.IsRect) And (this.RectAnchor > this.RectCaret) {
                 Loop (i := this.Count)
                     _str .= ((A_Index=1)?"":"`r`n") this.Get(i-1-(A_Index-1))
             } Else {
@@ -1824,7 +1824,7 @@ class Scintilla extends Gui.Custom {
             return this._sms(0xA0C, anchor, caret)  ; SCI_SETSELECTION
         }
         Start(pos:="", sel:=0) {                    ; start of selection is ALWAYS on the left
-            If (pos="")
+            if (pos="")
                 return this._sms(0xA19, sel)        ; SCI_GETSELECTIONNSTART
             Else
                 return this._sms(0xA18, sel, pos)   ; SCI_SETSELECTIONNSTART
@@ -1867,7 +1867,7 @@ class Scintilla extends Gui.Custom {
             set {
                 cs := "8859_15`r`nANSI`r`nArabic`r`nBaltic`r`nChineseBig5`r`nCyrillic`r`nDefault`r`nEastEurope`r`nGB2312`r`nGreek`r`nHangul`r`n"
                     . "Hebrew`r`nJohab`r`nMAC`r`nOEM`r`nOEM866`r`nRussian`r`nShiftJIS`r`nSymbol`r`nThai`r`nTurkish`r`nVietnamese"
-                If !Scintilla.charset.Has(value) And !IsInteger(value) {
+                if !Scintilla.charset.Has(value) And !IsInteger(value) {
                     Msgbox("Selecting a charset requires one of the following values:`r`n`r`n" cs)
                     return
                 }
@@ -1924,7 +1924,7 @@ class Scintilla extends Gui.Custom {
             get => this._sms(0x7EC) ; SCI_GETENDSTYLED
         }
         LineState(line, state:="") {                    ; int - user defined integer?
-            If (state="")
+            if (state="")
                 return this._sms(0x82D, line)           ; SCI_GETLINESTATE
             Else
                 return this._sms(0x82C, line, state)    ; SCI_SETLINESTATE
@@ -1966,7 +1966,7 @@ class Scintilla extends Gui.Custom {
             return this._sms(0x850, line)   ; SCI_GETLINEINDENTPOSITION
         }
         LineIndentation(line, spaces:="") {             ; n = line, value = num_of_spaces/columns
-            If (spaces="")
+            if (spaces="")
                 return this._sms(0x84F, line)           ; SCI_GETLINEINDENTATION
             Else
                 return this._sms(0x84E, line, spaces)   ; SCI_SETLINEINDENTATION
@@ -2179,9 +2179,9 @@ class Scintilla extends Gui.Custom {
             buf := Buffer(this._sms(msg, wParam) + 1, 0), out_str := ""
             this._sms(msg, wParam, buf.ptr)
             
-            If (reverse)
+            if (reverse)
                 Loop (offset := buf.Size - 1)
-                    If (_asc := NumGet(buf,offset - (A_Index-1),"UChar"))
+                    if (_asc := NumGet(buf,offset - (A_Index-1),"UChar"))
                         out_str .= Chr(_asc)
             
             return (reverse) ? out_str : StrGet(buf, "UTF-8")
@@ -2203,7 +2203,7 @@ class Scintilla extends Gui.Custom {
             return this._sms(msg, wParam, buf2.ptr)
         }
         _RGB_BGR(_in) {
-            If (0xFF000000 & _in)
+            if (0xFF000000 & _in)
                 return Format("0x{:06X}",(_in & 0xFF) << 24 | (_in & 0xFF00) << 8 | (_in & 0xFF0000) >> 8 | (_in >> 24))
             Else
                 return Format("0x{:06X}",(_in & 0xFF) << 16 | (_in & 0xFF00) | (_in >> 16))
@@ -2228,7 +2228,7 @@ class Scintilla extends Gui.Custom {
         _sms(msg, wParam:=0, lParam:=0) {
             obj := (this.__Class = "Scintilla") ? this : this.ctl
             ; status := 0
-            If (obj.UseDirect) {
+            if (obj.UseDirect) {
                 r := DllCall(obj.DirectStatusFunc, "UPtr", obj.DirectPtr, "UInt", msg, "Int", wParam, "Int", lParam, "Int*", &status:=0)
                 obj._StatusD := status
                 ; dbg_scintilla("Direct Func Status")
@@ -2251,7 +2251,7 @@ class Scintilla extends Gui.Custom {
             return a
         }
         _SetRect(value, _ptr, offset:=0) {
-            If (Type(value) != "Array") Or (value.Length != 4)
+            if (Type(value) != "Array") Or (value.Length != 4)
                 throw Error("Inalid input for this property.",,"The input for this property must be a linear array with 4 values:`r`n`r`n[1, 2, 3, 4]")
             
             Loop 4
@@ -2261,7 +2261,7 @@ class Scintilla extends Gui.Custom {
     
     class CharRange {
         __New(ptr := 0) {
-            If !ptr {
+            if !ptr {
                 this.struct := Buffer(8,0)
                 this.ptr := this.struct.ptr
             } Else
@@ -2283,14 +2283,14 @@ class Scintilla extends Gui.Custom {
     class TextRange {
         _ptr := 0
         __New(ptr:=0) {
-            If !ptr {
+            if !ptr {
                 this.struct := Buffer((A_PtrSize=4)?12:16, 0)
             } Else
                 this._ptr := ptr
         }
         _SetBuffer() {
-            If (this.cpMax) {
-                If (this.cpMax < this.cpMin)
+            if (this.cpMax) {
+                if (this.cpMax < this.cpMin)
                     throw Error("Invalid range.",,"`r`ncpMin: " this.cpMin "`r`ncpMax: " this.cpMax)
                 
                 this.buf := Buffer(this.cpMax - this.cpMin + 2, 0)
@@ -2503,14 +2503,14 @@ class ListComboBox_Ext {
     }
     
     GetCount() {
-        If (this.Type = "ListBox")
+        if (this.Type = "ListBox")
             return SendMessage(0x018B, 0, 0, this.hwnd) ; LB_GETCOUNT
-        Else If (this.Type = "ComboBox")
+        Else if (this.Type = "ComboBox")
             return SendMessage(0x146, 0, 0, this.hwnd)  ; CB_GETCOUNT
     }
     
     GetText(row) {
-        If (this.Type = "ListBox")
+        if (this.Type = "ListBox")
             return this._GetString(0x18A,0x189,row) ; 0x18A > LB_GETTEXTLEN // 0x189 > LB_GETTEXT
         Else if (this.Type = "ComboBox")
             return this._GetString(0x149,0x148,row) ; 0x149 > CB_GETLBTEXTLEN // 0x148 > CB_GETLBTEXT
@@ -2558,7 +2558,7 @@ class StatusBar_Ext extends Gui.StatusBar {
     }
     RemoveIcon(part:=1) {
         hIcon := SendMessage(0x414, part-1, 0, this.hwnd)
-        If hIcon
+        if hIcon
             SendMessage(0x40F, part-1, 0, this.hwnd)
         return DllCall("DestroyIcon","UPtr",hIcon)
     }
@@ -2583,7 +2583,7 @@ class PicButton extends Gui.Button {
         ControlSetStyle (curStyle | (!_type?BS_BITMAP:BS_ICON)), this.hwnd
         hOldImg := SendMessage(BM_SETIMAGE, _type, hImg, this.hwnd)
         
-        If (hOldImg)
+        if (hOldImg)
             (ImgType) ? DllCall("DestroyIcon","UPtr",hOldImg) : DllCall("DeleteObject","UPtr",hOldImg)
         
         ImgType := _type ; store current img type for next call/release
@@ -2605,7 +2605,7 @@ class SplitButton extends Gui.Button {
         ctl.base := SplitButton.Prototype
         
         ControlSetStyle (ControlGetStyle(ctl.hwnd) | BS_SPLITBUTTON), ctl.hwnd
-        If callback
+        if callback
             ctl.callback := callback
           , ctl.OnNotify(-1248, ObjBindMethod(ctl,"DropCallback"))
             

@@ -205,6 +205,20 @@ guiPreviewClientHeightDefault := 200
 guiPreviewClientWidth := guiPreviewClientWidthDefault
 guiPreviewClientHeight := guiPreviewClientHeightDefault
 
+
+guiImagePreviewPosXDefault := coordsAppToScreen(30) 
+guiImagePreviewPosYDefault := coordsAppToScreen(30)
+
+guiImagePreviewPosX := guiImagePreviewPosXDefault
+guiImagePreviewPosY := guiImagePreviewPosYDefault
+
+guiImagePreviewClientWidthDefault := 800
+guiImagePreviewClientHeightDefault := 600
+
+guiImagePreviewClientWidth := guiImagePreviewClientWidthDefault
+guiImagePreviewClientHeight := guiImagePreviewClientHeightDefault
+
+
 marginLeft := 2
 marginRight := 2
 marginTop := 2
@@ -236,7 +250,7 @@ hotkey("F1", quickHelp, "On")
 
 ;-------------------------------- Start gdi+ --------------------------------; 
 pToken := Gdip_Startup()
-If (!pToken) {
+if (!pToken) {
   MsgBox "Gdiplus konnte nicht gestartet werden, Bilderdarstellung ist eingeschränkt!"
 }
 
@@ -341,7 +355,7 @@ mainGui(){
 moveEventSwitch(p1, p2, p3, p4, *){
   local h1, h2, h3
   
-  h1 := 0, h2 := 0
+  h1 := 0, h2 := 0, h3 := 0
   
   if (IsSet(guiMain)){
     h1 := guiMain.hwnd
@@ -351,6 +365,10 @@ moveEventSwitch(p1, p2, p3, p4, *){
     h2 := guiPreview.hwnd
   }
   
+  if (IsSet(guiImagePreview)){
+    h3 := guiImagePreview.hwnd
+  }
+  
   Switch  p4
   {
     Case h1:
@@ -358,6 +376,9 @@ moveEventSwitch(p1, p2, p3, p4, *){
     
     Case h2:
       guiPreviewMove()
+      
+    Case h3:
+      guiImagePreviewMove()
   
   }
 }
