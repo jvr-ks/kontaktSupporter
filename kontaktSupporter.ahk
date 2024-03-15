@@ -275,9 +275,9 @@ mainGui(){
   TableMenu.Add("Trennzeichen in die Zwischenablage laden", separatorCharToClipBoard)
   
   ConfigMenu := Menu()
+  ConfigMenu.Add("Gesendet (Aufstellung)`"" logfileName "`"  ansehen", editLogFile)
   ConfigMenu.Add("Konfiguration `"" configFile "`" bearbeiten", editConfig)
   ConfigMenu.Add("Konfiguration (-> BaseDirectory) `"" configFile "`" bearbeiten", editConfigBaseDirectory)
-  ConfigMenu.Add("Gesendet `"" logfileName "`"  ansehen", editLogFile)
   ConfigMenu.Add("Externe Apps Liste `"" externalAppsFile "`" bearbeiten", editExternalApps)
   
   AttachmentMenu := Menu()

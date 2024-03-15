@@ -1,7 +1,7 @@
 # kontaktSupporter  
 ### Sorry, german language only!  
   
-### Status: Alpha, testbar!
+### Status: Im Betatest!
 
 ### Kurz-Hilfe mit der F1-Taste!  
 
@@ -10,6 +10,7 @@
   
 Version (&gt;=)| Änderung  
 ------------ | -------------  
+0.053 | Anhang-Bild Fenster änderbar, Positionsparameter werden gespeichert
 0.045 | Vorschaufenster verbessert, Anhang-Bild ansehen, Makrofunktion  
 0.040 | In "ksConfig.ini": externalAppOpenDelay=500 statt 5000, eMailAppOpenDelay=4000 löschen  
 0.036 | _lastUsed.txt ersetzt durch _previous.txt, "ksBodyFiles" ersetzt durch "ksInhalte", Neue Einträge mittels "Prototypen" Memo ist jetzt das letzte Feld.  
@@ -422,5 +423,5 @@ Copyright (c) 2024 J. v. Roos
 
 
 ##### Virusscan at Virustotal 
-[Virusscan at Virustotal, kontaktSupporter.exe 64bit-exe, Check here](https://www.virustotal.com/gui/url/559afadbdeb48211a00ad861d0b4d36bebc77b7f78e926708f22513499f3cbf0/detection/u-559afadbdeb48211a00ad861d0b4d36bebc77b7f78e926708f22513499f3cbf0-1710448970
+[Virusscan at Virustotal, kontaktSupporter.exe 64bit-exe, Check here](https://www.virustotal.com/gui/url/559afadbdeb48211a00ad861d0b4d36bebc77b7f78e926708f22513499f3cbf0/detection/u-559afadbdeb48211a00ad861d0b4d36bebc77b7f78e926708f22513499f3cbf0-1710494066
 )  
