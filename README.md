@@ -423,5 +423,5 @@ Copyright (c) 2024 J. v. Roos
 
 
 ##### Virusscan at Virustotal 
-[Virusscan at Virustotal, kontaktSupporter.exe 64bit-exe, Check here](https://www.virustotal.com/gui/url/559afadbdeb48211a00ad861d0b4d36bebc77b7f78e926708f22513499f3cbf0/detection/u-559afadbdeb48211a00ad861d0b4d36bebc77b7f78e926708f22513499f3cbf0-1710494066
+[Virusscan at Virustotal, kontaktSupporter.exe 64bit-exe, Check here](https://www.virustotal.com/gui/url/559afadbdeb48211a00ad861d0b4d36bebc77b7f78e926708f22513499f3cbf0/detection/u-559afadbdeb48211a00ad861d0b4d36bebc77b7f78e926708f22513499f3cbf0-1710717366
 )  
