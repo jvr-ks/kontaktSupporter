@@ -80,7 +80,7 @@ detectNewRunningAppLoop(theOpenLink, theCurrentRunningApps){
   if (!WinExist("ahk_id " theAppId)){
     theAppId := 0
   } else {
-    showHintColored("Ok, neue eMail-App gefunden: `"" appName "`"`nTitel: " WinGetTitle("ahk_id " theAppId))
+    showHintColored("Ok, neu gestartete eMail-App gefunden: " appName)
   }
   
   return theAppId
