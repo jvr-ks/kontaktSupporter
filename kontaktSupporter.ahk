@@ -541,7 +541,7 @@ openHelp(*){
 ;------------------------------ selectedIsValid ------------------------------
 selectedIsValid(selected){
   global mTb
-  local valid
+  local valid, msgResult
   
   valid := ((selected < 1) || (selected > mTb.length)) ? 0 : 1
 
@@ -658,13 +658,10 @@ sendSelected(preview := 0){
       
         showHintColored(msg, 0,,,,,"y10 xcenter")
         WinActivate("ahk_id " eMailAppId)
-        KeyWait "F3", "D"
-
-        hintColored.Destroy()
         
-        if (GetKeyState("Shift", "P")){
-          showHintColored("Umschalttaste wurde gedrückt, es erfolgt kein Eintrag in der Datei `"gesendet.txt`" !", hintDelay)
-        } else {
+        msgResult := msgbox("Die eMail als gesendet eingetragen?", "eMail handling fertig?" , 0x21)
+
+        if (msgResult = "Yes"){
           dateData := FormatTime(, "yyyy/MM/dd ") separatorChar FormatTime("T12", "Time") separatorChar trim(name) separatorChar trim(adrText) separatorChar trim(ccText) separatorChar trim(bccText) separatorChar trim(subjectText) separatorChar trim(bodyFileName) separatorChar attachment "`n"
 
           dateData := RegExReplace(dateData,"%.{2}"," ")
@@ -672,7 +669,12 @@ sendSelected(preview := 0){
             dateData .= "`n"
           
           FileAppend dateData, logfileName, "`n"
+        } else {
+          showHintColored("Es erfolgte kein Eintrag in der Datei `"gesendet.txt`" !", hintDelay)
         }
+  
+        hintColored.Destroy()
+        
       }
       FileDelete "ClipBoard*.txt"
       
@@ -702,8 +704,7 @@ leaveMessage(prepend := "", append := ""){
     A_Clipboard := modifyAttachmentsPath(attachment)
     msg .= "`nDer Pfad des Anhangs ist in der Zwischenablage,`nbitte den Anhang jetzt manuell einfügen.`n`n"
   }
-  msg .= "Danach bitte die eMail manuell senden!`n`n"
-  msg .= "`nZurück zur `"kontaktSupporter`"-App mit der F3-Taste,`nUmschalt + F3 drücken, falls die eMail nicht gesendet wurde!"
+  msg .= "Danach bitte die eMail manuell senden oder abbrechen und die eMail app schließen!`n`n"
   msg .= append
   
   return msg
@@ -839,7 +840,7 @@ sendTxtOnly(textContent){
     SendInput("^a")
     sleep sendDelay
     
-    msg := leaveMessage("Alles bleibt markiert, um Text und Schrifteinstellungen anpassen zu können,`n`n")
+    msg := leaveMessage("Alles bleibt markiert, um Text und Schrifteinstellungen anpassen zu können,`n")
     
     showHintColored(msg, 0,,,,,"y10 xcenter")
   } else {
@@ -849,24 +850,23 @@ sendTxtOnly(textContent){
   
   WinActivate("ahk_id " eMailAppId)
   
-  KeyWait "F3", "D"
+  msgResult := msgbox("Die eMail als gesendet eingetragen?", "eMail handling fertig?" , 0x21)
 
-  hintColored.Destroy()
-
-  SendInput("^{Home}")
-  
-  if (GetKeyState("Shift", "P")){
-    showHintColored("Umschalttaste wurde gedrückt, es erfolgt kein Eintrag in der Datei `"gesendet.txt`" !", hintDelay)
-  } else {
+  if (msgResult = "Yes"){
     dateData := FormatTime(, "yyyy/MM/dd ") separatorChar FormatTime("T12", "Time") separatorChar trim(name) separatorChar trim(adrText) separatorChar trim(ccText) separatorChar trim(bccText) separatorChar trim(subjectText) separatorChar trim(bodyFileName) separatorChar attachment "`n"
 
     dateData := RegExReplace(dateData,"%.{2}"," ")
     if (StrLen(dateData) > 70)
       dateData .= "`n"
-      
+    
     FileAppend dateData, logfileName, "`n"
+  } else {
+    showHintColored("Es erfolgte kein Eintrag in der Datei `"gesendet.txt`" !", hintDelay)
   }
 
+  SendInput("^{Home}")
+  hintColored.Destroy()
+ 
   if (WinExist("ahk_id " eMailAppId)){
     WinClose "ahk_id " eMailAppId
     sleep closeDelay

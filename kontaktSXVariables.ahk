@@ -160,7 +160,7 @@ initGlobalVariables(){
   externalAppOpenDelay := externalAppOpenDelayDefault
 
   commandsDelay := 500
-  closeDelay := 4000
+  closeDelay := 15000
   hintDelay := 3000
   copyDelay := 5000
   winRunDelay := 2000
