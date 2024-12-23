@@ -10,7 +10,7 @@
   
 Version (&gt;=)| Änderung  
 ------------ | -------------  
-0.064 | Die 2. Zeile in der Vorschau zeigt das makro-expandierte "subject"-Feld sowie den Pfad zum Anhang an  
+0.064 | Die 2. Zeile in der Vorschau zeigt das makro-expandierte "subject"-Feld sowie den Pfad \*1) zum Anhang an  
 0.062 | Neue Menüpunkte zum Öffnen der Ordner "Vorlagen und "Text-Bausteine"  
 0.058 | Vorlagenverzeichnis wird aus der Konfigurations-Datei gelesen (default Ordner: "ksVorlagen")  
 0.056 | Konfigurations-Datei geändert: alt: "ksConfig.ini" neu: "kontaktsupporter.ini", Bugfixes  
@@ -22,7 +22,9 @@ Version (&gt;=)| Änderung
 0.032 | {°&lt;DATEINAME.txt&gt;°} geändert in °&lt;DATEINAME.txt&gt; (Leerzeichen am Ende!)  
 0.031 | {°&lt;DATEINAME.txt&gt;°} geändert in {°&lt;DATEINAME.txt&gt;°}  
 0.030 | Support für Textbausteine im Subjekt-Feld um im Text (Body-Feld) s.u.  
-
+  
+\*1) Nur falls das "subject"-Feld (Betreffend-Feld) nicht zu lang ist ...  
+  
 #### Bekannte Fehler / Bugs  
 Issue / Bug | Type | fixed in version  
 ------------ | ------------- | -------------  
