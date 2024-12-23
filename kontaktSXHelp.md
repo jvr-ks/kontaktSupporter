@@ -10,10 +10,11 @@
   
 Version (&gt;=)| Änderung  
 ------------ | -------------  
-0.062 | Neue Menüpunkte zum Öffnen der Ordner "Vorlagen und "Text-Bausteine"
-0.058 | Vorlagenverzeichnis wird aus der Konfigurations-Datei gelesen (default Ordner: "ksVorlagen")
-0.056 | Konfigurations-Datei geändert: alt: "ksConfig.ini" neu: "kontaktsupporter.ini", Bugfixes
-0.053 | Anhang-Bild Fenster änderbar, Positionsparameter werden gespeichert
+0.064 | Die 2. Zeile in der Vorschau zeigt das makro-expandierte "subject"-Feld sowie den Pfad zum Anhang an  
+0.062 | Neue Menüpunkte zum Öffnen der Ordner "Vorlagen und "Text-Bausteine"  
+0.058 | Vorlagenverzeichnis wird aus der Konfigurations-Datei gelesen (default Ordner: "ksVorlagen")  
+0.056 | Konfigurations-Datei geändert: alt: "ksConfig.ini" neu: "kontaktsupporter.ini", Bugfixes  
+0.053 | Anhang-Bild Fenster änderbar, Positionsparameter werden gespeichert  
 0.045 | Vorschaufenster verbessert, Anhang-Bild ansehen, Makrofunktion  
 0.040 | In "ksConfig.ini": externalAppOpenDelay=500 statt 5000, eMailAppOpenDelay=4000 löschen  
 0.036 | _lastUsed.txt ersetzt durch _previous.txt, "ksBodyFiles" ersetzt durch "ksInhalte", Neue Einträge mittels "Prototypen" Memo ist jetzt das letzte Feld.  
@@ -25,6 +26,7 @@ Version (&gt;=)| Änderung
 #### Bekannte Fehler / Bugs  
 Issue / Bug | Type | fixed in version  
 ------------ | ------------- | -------------  
+eMail Parameter (expanded): Feld zeigt nicht allen Inhalt | Issue | 0.064
 Neuer Tabelleneintrag (Kopie ...) | Issue | Feld "Ok" wird auch übernommen, sollte aber zurückgesetzt werden | offen
 ~~Inhalt ➝ neue Datei aus Vorlage erhält die Endung ".txt.txt"~~ | Bug | 0.063
 ~~Dopus open mit \[Ordner] funktioniert nicht~~ | Bug | 0.061  

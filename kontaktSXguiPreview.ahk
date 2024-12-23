@@ -7,7 +7,7 @@ previewGui(){
 
   paddingLeft := 0
   paddingRight := 10
-  paddingTop := 120
+  paddingTop := 60
   paddingBottom := 60
   sciRAWwidth := 800
   sciRAWheight := 600
@@ -26,11 +26,11 @@ previewGui(){
   
   guiPreview.Add("Edit", "x" clientTopX " y" clientTopY " r0 h0 w600", "dummy1") ; Focus dummy and size dummy
   
-  guiPreview.Add("Text", "w600 x" clientTopX, "eMail Parameter: ")
-  previewParam := guiPreview.Add("Text", "w600 x" clientTopX)
+  ;guiPreview.Add("Text", "w1024 x" clientTopX, "eMail Parameter: ")
+  previewParam := guiPreview.Add("Text", "w1024 x" clientTopX)
   
-  guiPreview.Add("Text", "w600 x" clientTopX, "eMail Parameter (expanded): ")
-  previewParamExpanded := guiPreview.Add("Text", "w600 x" clientTopX)
+  ;guiPreview.Add("Text", "w1024 x" clientTopX, "eMail Parameter (effektiv): ")
+  previewParamExpanded := guiPreview.Add("Text", "w1024 x" clientTopX)
   
   SB := guiPreview.Add("StatusBar")
   SB.SetParts(300, 300)
@@ -203,12 +203,12 @@ generatePreviewParam(){
   
   previewParam.Value := param
   
-  paramExpanded := format("{:03}", currentLineNumber) ": "
-  paramExpanded .= (name != "") ? name " / " : ""
-  paramExpanded .= (adrText != "") ? adrText " / " : ""
-  paramExpanded .= (ccText != "") ? ccText " / " : ""
-  paramExpanded .= (bccText != "") ? bccText " / " : "---"
-  paramExpanded .= (subjectText != "") ? subjectText " / " : ""
+  ; paramExpanded := format("{:03}", currentLineNumber) ": "
+  ; paramExpanded .= (name != "") ? name " / " : ""
+  ; paramExpanded .= (adrText != "") ? adrText " / " : ""
+  ; paramExpanded .= (ccText != "") ? ccText " / " : ""
+  ; paramExpanded .= (bccText != "") ? bccText " / " : "---"
+  paramExpanded := (subjectText != "") ? StrReplace(subjectText, "%20", " ") " / " : ""
   paramExpanded .= (attachment != "") ? attachment " / " : ""
   
   previewParamExpanded.Value := paramExpanded
