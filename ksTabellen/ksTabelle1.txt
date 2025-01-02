@@ -1,0 +1,5 @@
+Test1¦xy@xyz.de¦cc@xy.de¦bcc@xy.de¦test & other¦TestData4.xls¦Weser.jpg¦1¦xy@xyz.de
+Test2¦xy@xyz.de¦cc@xy.de¦°Gruppe1¦test & other¦TestData3.odt¦TEST\2024 (Bilder von 2024)¦1¦cc@xy.de
+Test3a¦xy@xyz.de¦¦bcc¦°t3¦test3.txt¦C:\___x2_wrk\_autohotkey\kontaktSupporter\ksAnhang\TEST\2024\Weser.jpg¦1¦bcc
+Mahnung 27896¦schuldner@saeumig.de¦¦¦Letzte Mahnung! 😖😖😖¦Mahnung27896.txt¦¦1¦Letzte Mahnung! 😖😖😖
+NEU!¦xy@xy.de¦¦¦¦2024\test3.txt¦¦1¦memo leer

@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>kontaktSupporter Hilfe</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style type="text/css">html {color: #1a1a1a;background-color: #fdfdfd;}body {margin: 0 auto;padding-left: 20px;padding-right: 20px;padding-top: 20px;padding-bottom: 20px;hyphens: auto;overflow-wrap: break-word;text-rendering: optimizeLegibility;font-kerning: normal;}@media (max-width: 600px) {body {font-size: 0.9em;padding: 12px;}h1 {font-size: 1.8em;}}@media print {html {background-color: white;}body {background-color: transparent;color: black;font-size: 12pt;}p, h2, h3 {orphans: 3;widows: 3;}h2, h3, h4 {page-break-after: avoid;}}p {margin: 1em 0;}a {color: #1a1a1a;}a:visited {color: #1a1a1a;}img {max-width: 100%;}h1, h2, h3, h4, h5, h6 {margin-top: 1.4em;}h5, h6 {font-size: 1em;font-style: italic;}h6 {font-weight: normal;}ol, ul {padding-left: 1.7em;margin-top: 1em;}li > ol, li > ul {margin-top: 0;}blockquote {margin: 1em 0 1em 1.7em;padding-left: 1em;border-left: 2px solid #e6e6e6;color: #606060;}code {font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;font-size: 85%;margin: 0;hyphens: manual;}pre {margin: 1em 0;overflow: auto;}pre code {padding: 0;overflow: visible;overflow-wrap: normal;}.sourceCode {background-color: transparent;overflow: visible;}hr {background-color: #1a1a1a;border: none;height: 1px;margin: 1em 0;}table {margin: 1em 0;border-collapse: collapse;width: 100%;overflow-x: auto;display: block;font-variant-numeric: lining-nums tabular-nums;}table caption {margin-bottom: 0.75em;}tbody {margin-top: 0.5em;border-top: 1px solid #1a1a1a;border-bottom: 1px solid #1a1a1a;}th {border-top: 1px solid #1a1a1a;padding: 0.25em 0.5em 0.25em 0.5em;}td {padding: 0.125em 0.5em 0.25em 0.5em;}header {margin-bottom: 4em;text-align: center;}#TOC li {list-style: none;}#TOC ul {padding-left: 1.3em;}#TOC > ul {padding-left: 0;}#TOC a:not(:hover) {text-decoration: none;}code{white-space: pre-wrap;}span.smallcaps{font-variant: small-caps;}div.columns{display: flex; gap: min(4vw, 1.5em);}div.column{flex: auto; overflow-x: auto;}div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}ul.task-list{list-style: none;}ul.task-list li input[type="checkbox"] {width: 0.8em;margin: 0 0.8em 0.2em -1.6em;vertical-align: middle;}.display.math{display: block; text-align: center; margin: 0.5rem auto;}table{background-color:#fafafa}table tr td{border:1px solid #e6e6e6}table tr:nth-child(2n){background-color:#f2f2f2}</style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">kontaktSupporter Hilfe</h1>
+</header>
+<h1 id="kontaktsupporter">kontaktSupporter</h1>
+<h3 id="sorry-german-language-only">Sorry, german language only!</h3>
+<h3 id="status-im-betatest">Status: Im Betatest!</h3>
+<h3 id="kurz-hilfe-mit-der-f1-taste">Kurz-Hilfe mit der F1-Taste!</h3>
+<h4 id="letzte-änderungen">Letzte Änderungen:</h4>
+<table>
+<thead>
+<tr class="header">
+<th>Version (&gt;=)</th>
+<th>Änderung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0.066</td>
+<td>Bugfixes</td>
+</tr>
+<tr class="even">
+<td>0.064</td>
+<td>Die 2. Zeile in der Vorschau zeigt das makro-expandierte
+&quot;subject&quot;-Feld sowie den Pfad *1) zum Anhang an</td>
+</tr>
+<tr class="odd">
+<td>0.062</td>
+<td>Neue Menüpunkte zum Öffnen der Ordner &quot;Vorlagen und
+&quot;Text-Bausteine&quot;</td>
+</tr>
+<tr class="even">
+<td>0.058</td>
+<td>Vorlagenverzeichnis wird aus der Konfigurations-Datei gelesen
+(default Ordner: &quot;ksVorlagen&quot;)</td>
+</tr>
+<tr class="odd">
+<td>0.056</td>
+<td>Konfigurations-Datei geändert: alt: &quot;ksConfig.ini&quot; neu:
+&quot;kontaktsupporter.ini&quot;, Bugfixes</td>
+</tr>
+<tr class="even">
+<td>0.053</td>
+<td>Anhang-Bild Fenster änderbar, Positionsparameter werden
+gespeichert</td>
+</tr>
+<tr class="odd">
+<td>0.045</td>
+<td>Vorschaufenster verbessert, Anhang-Bild ansehen, Makrofunktion</td>
+</tr>
+<tr class="even">
+<td>0.040</td>
+<td>In &quot;ksConfig.ini&quot;: externalAppOpenDelay=500 statt 5000,
+eMailAppOpenDelay=4000 löschen</td>
+</tr>
+<tr class="odd">
+<td>0.036</td>
+<td>_lastUsed.txt ersetzt durch _previous.txt, &quot;ksBodyFiles&quot; ersetzt
+durch &quot;ksInhalte&quot;, Neue Einträge mittels &quot;Prototypen&quot; Memo ist jetzt das
+letzte Feld.</td>
+</tr>
+<tr class="even">
+<td>0.035</td>
+<td>Trennzeichen &quot;</td>
+</tr>
+<tr class="odd">
+<td>0.032</td>
+<td>{°&lt;DATEINAME.txt&gt;°} geändert in °&lt;DATEINAME.txt&gt;
+(Leerzeichen am Ende!)</td>
+</tr>
+<tr class="even">
+<td>0.031</td>
+<td>{°&lt;DATEINAME.txt&gt;°} geändert in {°&lt;DATEINAME.txt&gt;°}</td>
+</tr>
+<tr class="odd">
+<td>0.030</td>
+<td>Support für Textbausteine im Subjekt-Feld um im Text (Body-Feld)
+s.u.</td>
+</tr>
+</tbody>
+</table>
+<p>*1) Nur falls das &quot;subject&quot;-Feld (Betreffend-Feld) nicht zu lang ist
+...</p>
+<h4 id="bekannte-fehler--bugs">Bekannte Fehler / Bugs</h4>
+<table>
+<thead>
+<tr class="header">
+<th>Issue / Bug</th>
+<th>Type</th>
+<th>fixed in version</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><del>Anhang &quot;Datei auswählen&quot;: Der Pfad wird manchmal nicht
+vollständig oder falsch eingetragen</del></td>
+<td>Bug</td>
+<td>0.066</td>
+</tr>
+<tr class="even">
+<td><del>eMail Parameter (expanded): Feld zeigt nicht allen
+Inhalt</del></td>
+<td>Issue</td>
+<td>0.064</td>
+</tr>
+<tr class="odd">
+<td><del>Inhalt ➝ neue Datei aus Vorlage erhält die Endung
+&quot;.txt.txt&quot;</del></td>
+<td>Bug</td>
+<td>0.063</td>
+</tr>
+<tr class="even">
+<td><del>Dopus open mit [Ordner] funktioniert nicht</del></td>
+<td>Bug</td>
+<td>0.061</td>
+</tr>
+</tbody>
+</table>
+<h4 id="beschreibung">Beschreibung</h4>
+<p><em>kontaktSupporter</em> dient dem Versenden von eMails,<br />
+die oft mit geringfügig geändertem Inhalt verschickt werden müssen.</p>
+<p>Kann man auch alles mit der eMailApp machen,</p>
+<ul>
+<li>kontaktSupporter* bietet aber bis jetzt folgende besondere
+Features:</li>
+<li>Importieren des eMail-Inhalts aus einer vorher festgelegten
+Datei,</li>
+<li>Öffnen externer Apps im eMail-Anhang-Ordner,</li>
+<li>Nutzung von Textbausteinen (nur in Textnachrichten oder
+RTF-Nachrichten), nicht mit DOCX, ODF oder anderen Formaten.</li>
+</ul>
+<p>Als eMail-Inhalte sind möglich:</p>
+<ul>
+<li>reine Textdateien (Dateiendung &quot;.txt, .rtf&quot;)</li>
+<li>alle anderen Formate, sofern ein Programm (App) zum Öffnen dieses
+Formats installiert ist,<br />
+welches die Windows-üblichen Hotkeys (s.u.) unterstützt.<br />
+Dazu wird das entsprechende Programm kurz geöffnet, um die Daten in die
+Zwischenablage zu kopieren.<br />
+Wichtig: Das entsprechende Programm darf vorher nicht geöffnet
+sein,<br />
+es wird dann als neuer Prozess geöffnet und <em>kontaktSupporter</em>
+kann es dadurch erkennen!</li>
+</ul>
+<p>Zum Senden wird das Standard eMail-Programm verwendet, welches mit
+&quot;mailto://&quot; verknüpft ist.<br />
+Es muß Windows-üblichen Hotkeys (s.u.) unterstützen.<br />
+Wichtig: Auch das eMail-Programm darf vorher nicht geöffnet seindamit es
+von <em>kontaktSupporter</em> erkannt werden kann!</p>
+<p><em>kontaktSupporter</em> funktioniert so, als ob ein Benutzer die
+Eingaben macht, nur komfortabler.<br />
+Während <em>kontaktSupporter</em> arbeitet dürfen daher die Fenster (z.
+B. des eMailprogramms) nicht geschlossen,<br />
+oder andere Programme gestartet werden, die das Fenster überdecken
+würden.<br />
+Dadurch wird <em>kontaktSupporter</em> sehr universell verwendbar,<br />
+kann aber &quot;bei der Arbeit&quot; durch Benutzereingriffe gestört werden.</p>
+<h4 id="hinweise">Hinweise</h4>
+<h5 id="öffnen-von-dateien">Öffnen von Dateien</h5>
+<p>Dateien werden immer mit dem der Dateiendung zugeordneten Programm
+geöffnet. Welches das ist, ist eine Windows Einstellung, siehe <a href="https://techmixx.de/windows-10-dateiendung-einem-programm-zuordnen/">Windows
+10: Dateiendung einem Programm zuordnen</a></p>
+<p>Hat die Datei keine Endung, wird automatisch die Endung &quot;.txt&quot;
+angenommen.<br />
+Das gilt für alle verwendeten Dateien, also auch Textbausteine
+usw.<br />
+Dadurch kann man die Endung in der Tabelle auch weglassen,<br />
+wodurch die Tabelle deutlich übersichtlicher wird!</p>
+<h5 id="hinweis-zu-memo-feld">Hinweis zu Memo-Feld</h5>
+<p>Da das Memo-Feld mehrzeilig sein kann, werden Zeilenvorschübe
+speziell kodiert,<br />
+da sie sonst in der Tabellendatei einen neuen Eintrag starten würden. In
+der Bearbeiten Anzeige werden sie aber wieder dekodiert angezeigt,<br />
+Die Kodierung (einstellbar) für einen Zeilenvorschub ist default: 0x00AC
+(das &quot;¬&quot;-Zeichen).</p>
+<h5 id="hinweis-zur-anzeige-der-tabelle">Hinweis zur Anzeige der
+Tabelle</h5>
+<p>Der Anhang (Pfad) wird in der Tabelle gekürzt dargestellt, wenn er
+sehr lang ist.</p>
+<p>Bearbeiten und Vorschau werden immer in zentrierten Fenstern
+angezeigt (TODO).<br />
+Die Größe und Position der Fenster ist änderbar, wird aktuell aber nicht
+gespeichert (TODO).</p>
+<h4 id="menü">Menü</h4>
+<p>Es gibt zwei Menüs, das Haupt-Menü und das Menü im
+&quot;Bearbeiten&quot;-Fenster.<br />
+Ein Menüpunkt [🔗 Anhang] ist in beiden Menüs vorhanden
+(identisch),<br />
+da man meistens zunächst die Anhänge bearbeitet / sondiert.<br />
+Warum mehrere Dateimanager?<br />
+Jeder hat bestimmte Vorteile, z.B. FreeCommander hat eine optimal
+konfigurierbare Bildvorschau,<br />
+während ich &quot;Dopus&quot; aus historischen Gründen gewohnt bin. Das Haupt-Menü
+kann mit Text oder platzsparend nur mit Icons angezeigt werden (Taste
+[+...] oder [-...])<br />
+Eine Beschreibung der einzelnen Tasten befindet sich in der
+Kurz-Hilfe,<br />
+welche mit der F1-Taste abrufbar (Datei &quot;kontaktSXQHelp.html&quot;) ist.</p>
+<h4 id="anhänge">Anhänge</h4>
+<p>In der Tabelle kann für jede Zeile der Pfad zu einem Verzeichnis (=
+Ordner) eingetragen werden, welches die Anhänge enthält.<br />
+In der Datei &quot;ksExternalApps.txt&quot; (aktuell ist der Name fest TODO) kann
+man externe Apps (=Programme) eintragen,<br />
+die dann im Menü unter [🔗 Anhang] gestartet werden können.<br />
+Deaktivieren einzelner Einträge mit Kommentarzeichen (&quot;;&quot; oder &quot;#&quot; oder
+&quot;//&quot;) am Zeilenanfang.<br />
+Nach Änderungen einmal auf &quot;Refresh&quot; klicken!</p>
+<p>Besteht der Anhang aus nur einer einzigen Datei, kann statt dem Pfad
+des Ordners der Pfad dieser Datei eingetragen werden.<br />
+Beim Zugriff mit einem Dateimanager (Menü -&gt; [🔗 Anhang] oder Menü
+-&gt; [Bearbeiten] -&gt; [🔗 Anhang])<br />
+wird dann allerdings nicht der Ordner, sondern diese Datei mittels<br />
+dem der Dateiendung zugeordneten Programm geöffnet, was eventuell
+unerwünscht ist.</p>
+<p>Ich muss oft Bildateien verschicken, diese müssen aber meistens noch
+gedreht und verkleinert werden.<br />
+Dazu verwende ich &quot;ACDSee Pro5&quot; (nicht kostenlos), dann muss ich
+gelegentlich auch noch weitere Dateien hinzufügen, also einen
+Dateimanager im Ordner der Anhänge öffnen.<br />
+Ich verwende dazu &quot;Dopus&quot; (nicht kostenlos), neben dem Explorer gibt es
+aber noch einige gute kostenlose Dateimanager, s.u..</p>
+<p>Man spart viel Zeit, wenn man nicht überlegen muss, wo denn jetzt
+wieder diese Anhänge sind ... (Anhänge sind standardmässig in einem
+Unterordner von &quot;ksAnhang&quot;)</p>
+<p>Das kann aber alles in der Konfiguration leicht angepasst werden.</p>
+<p>Eine durchdachte Verwendung von Unterordnern hilft dabei immer
+sehr,<br />
+also z.b. &quot;2024&quot; oder &quot;2024/01&quot; oder entwuerfe/2024/01 usw.<br />
+(Tipp: Grundsätzlich sollte man immer Umlaute in Datei- und Ordnernamen
+vermeiden,<br />
+wenn Groß- und Kleinbuchstaben verwendet werden darauf achten, das sie
+immer genauso verwendet werden.<br />
+Das erspart viel Ärger, wenn man mal ein anderes Betriebssystem
+verwenden will).</p>
+<p>Verändert das externen Programm irgendwelche Daten, die dann wieder
+von kontakSupporter verwendet werden,<br />
+kann mit der Menü-Taste &quot;⟳ Refresh&quot; die Anzeige aktualisiert werden (App
+wird neu gestartet).<br />
+Bei den Funktionen aus dem Menü wird die Anzeige meist automatisch
+aktualisiert,<br />
+sobald kontakSupporter wieder verwendet wird.</p>
+<h6 id="anhang-bildvorschau">Anhang-Bildvorschau</h6>
+<p>Zum schnellen Überprüfen eines Bildes, funktioniert aber nur, wenn
+das Anhang-Feld auf ein einzelnes Bild zeigt,<br />
+also nicht, wenn das Anhang-Feld auf einen Bild-Ordner zeigt.<br />
+Wird auch ausgelöst durch: [Umschaltaste] + einfacher/doppelter
+Mausklick.</p>
+<h5 id="festes-verzeichnis">Festes Verzeichnis</h5>
+<p>Oft muß man Anhang-Dateien noch verschieben/kopieren,<br />
+dann sind Dateimanager mit 2 Fenstern, also 2 Ordner-Ansichten die
+bessere Wahl.<br />
+Der zweite Ordner wird dabei in eckigen Klammern hinter dem
+Dateimanagernamen angegeben.</p>
+<h5 id="von-kontaktsupporter-unterstützt-dateimanager-die-zwei-ordner-nebeneinander-anzeigen-können">Von
+<em>kontaktSupporter</em> unterstützt Dateimanager, die zwei Ordner
+nebeneinander anzeigen können</h5>
+<ul>
+<li><a href="https://www.gpsoft.com.au/">Directory Opus (&quot;Dopus&quot;)</a>
+(nicht kostenlos)</li>
+<li><a href="https://freecommander.com">FreeCommander</a></li>
+<li><a href="http://multicommander.com">MultiCommander</a></li>
+</ul>
+<p>In der Datei &quot;ksExternalApps.txt&quot; müssen die Pfade zu den jeweiligen
+*.exe-Dateien einmalig angepasst werden!<br />
+Die vorhandene Datei &quot;ksExternalApps.txt&quot; kann als Vorlage dienen.</p>
+<p>Für FreeCommander und MultiCommander sind dort Pfade zu der
+jeweiligen portablen Version eingetragen.</p>
+<p>Der feste Ordner erscheint jeweils im linken Tab, der des
+Anhang-Ordners im Rechten.</p>
+<h4 id="kontaktsupporter-hotkeys"><em>kontaktSupporter</em> Hotkeys</h4>
+<table>
+<thead>
+<tr class="header">
+<th>Hotkey-Tasten</th>
+<th>Funktion</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>[F1]</td>
+<td>Kurz-Hilfe</td>
+</tr>
+</tbody>
+</table>
+<h4 id="download-zip-file">Download Zip-file</h4>
+<p>Github: <a href="https://github.com/jvr-ks/kontaktSupporter/raw/main/kontaktSupporter.zip">kontaktSupporter.zip</a><br />
+Die Zip-files enthalten keinen Quellcode!</p>
+<h4 id="installation">Installation:</h4>
+<p>Zip-file entpacken, z.B. in den Ordner: &quot;C:\jvrks\kontaktSupporter&quot;
+.</p>
+<p>Der Ordner muß von <em>kontaktSupporter</em> vom aktuellen Benutzer
+beschreibbar sein,<br />
+also NICHT in einen Unterordner von &quot;C:\Program Files&quot; oder C:\Program
+Files (x86)&quot; entpacken!</p>
+<h4 id="textbausteine">Textbausteine</h4>
+<p>Es können in Text-Dateien vorhandene Inhalte eingefügt werden, und
+zwar in:</p>
+<ul>
+<li>dem Adresse Feld (eMail-Adressen mit Komma trennen)</li>
+<li>dem Cc Feld (eMail-Adressen mit Komma trennen)</li>
+<li>dem Bcc Feld (eMail-Adressen mit Komma trennen)</li>
+<li>dem Subjekt Feld</li>
+<li>dem Body-Feld (nur Body-Felder die reine Text-Dateien sind (RTF geht
+auch)!)</li>
+</ul>
+<p>Die Platzhalter haben das Format: °&lt;DATEINAME.txt&gt; (Leerzeichen
+am Ende!) (ab Version 0.032)<br />
+Der DATEINAME selbst darf KEINE Leerzeichen (oder andere <a href="https://de.wikipedia.org/wiki/Leerraum">Whitespace-Zeichen</a>)
+enthalten Die Datei Extension &quot;.txt&quot; kann auch weggelassen werden!<br />
+Die Dateien müssen sich im Ordner &quot;textModulsFilePath=&quot; (default:
+&quot;ksTextBausteine&quot;) befinden.<br />
+Beispiel:<br />
+Die Datei &quot;Mahnung27896.txt&quot; enthält:</p>
+<pre><code>{°absender.txt°}
+
+
+{°kunde27896.txt°}
+
+{°sgdh.txt°}
+
+he, Leute, her mit der Kohle!
+
+{°mfg.txt°}</code></pre>
+<p>Die Dateien enthalten:<br />
+&quot;absender.txt&quot; Die Absenderadresse<br />
+&quot;kunde27896.txt&quot; Die Empfängeradresse<br />
+&quot;sgdh.txt&quot; den Text: &quot;Sehr geehrte Damen und Herren,&quot;<br />
+&quot;mfg.txt&quot; den Text: &quot;Mit freundlichen Grüßen...&quot;<br />
+&quot;mahnstufe3.txt&quot; den Text: Letzte Mahnung! 😖😖😖</p>
+<p>Tipp: Häufig verwendete Texbaustein-Dateien sollten mit einem
+Unterstrich beginnen,<br />
+dadurch werden sie in Dateimanagern immer ganz oben angezeigt.</p>
+<p>Der Eintrag in &quot;ksTabelle.txt&quot; lautet:<br />
+Mahnung 27896¦<a href="mailto:schuldner@saeumig.de">schuldner@saeumig.de</a>¦¦¦°mahnstufe3¦Mahnung27896.txt¦¦1¦°mahnstufe3
+ist gleichbedeutend mit: °mahnstufe3.txt¬(bei °Dateiname.txt kann das
+&quot;.txt&quot; weggelassen werden!)¬Im MemoFeld werden Zeilenvorschübe speziell
+kodiert, da sie sonst die Tabellendatei stören würden.¬Hier wird es aber
+wieder dekodiert angezeigt!¦</p>
+<p>Die generierte eMail sieht dann so aus:</p>
+<p>An-Feld: <a href="mailto:schuldner@saeumig.de">schuldner@saeumig.de</a><br />
+Im Betreff: Letzte Mahnung! 😖😖😖</p>
+<p>Im eMail-Body steht:</p>
+<pre><code>Irgendwer
+Irgendwo
+Irgend eine Stadt
+
+
+Der böse Kunde 27896
+Auf dem Holzweg 99
+0001 Fast im Gefängnis
+
+Sehr geehrte Damen und Herren,
+
+he, Leute, her mit der Kohle!
+
+Mit freundlichen Grüßen
+
+Generaldirektor Dr. Mustermann</code></pre>
+<h4 id="makros">Makros</h4>
+<p>Makros sind eine Buchstabenkombination die eine Textersetzung
+auslösen. Im Gegensatz zu Textbausteinen, die das Einfügen von in einer
+Datei vordefiniertem Text erlauben,<br />
+also quasi ein statischer Vorgang, ermöglichen Makros das Einfügen von
+dynamisch generierten Inhalten.<br />
+Ein typisches Beispiel ist das Einfügen des aktuelle Datums.<br />
+Es sind nur Makros möglich, die vorher im kontaktSupporter-Programm
+eingebaut wurden.<br />
+Eine Selbstdefinition wäre zwar möglich, sprengt aber den Rahmen dieses
+simplen Tools.</p>
+<p>Aktuell sind definiert:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Makro</th>
+<th>Funktion</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>#dl#</td>
+<td>Datum lang</td>
+</tr>
+<tr class="even">
+<td>#d#</td>
+<td>Datum kurz</td>
+</tr>
+<tr class="odd">
+<td>#u#</td>
+<td>Uhrzeit</td>
+</tr>
+</tbody>
+</table>
+<p>Ein doppeltes Escape-Zeichen hebt die Escape-Funktion auf, dadurch
+wird das Makros ausgeführt. Das Escape-Zeichen wird dann als normales
+Zeichen angezeigt. Es werden alle Textelemente die der Makrostruktur
+entsprechen ausgewertet, unbekannte Makros werden entfernt.<br />
+Makros werden bei jedem Generieren der eMail interpretiert, d.h. der
+Inhalt ändert sich dann u.U. jedesmal.<br />
+Ist das nicht erwünscht (z.B. soll das Datum erhalten bleiben) kann man
+ein externes Makroprogramm verwenden,<br />
+z.B. <a href="https://lintalist.github.io/">Lintalist</a> oder <a href="https://ditto-cp.sourceforge.io/">Ditto</a>.</p>
+<p>Weitere Makros folgen nach Bedarf!</p>
+<h5 id="allgemeines-makroformat">Allgemeines Makroformat:</h5>
+<p>Nach dem einleitenden &quot;#&quot;-Zeichen können 1-3 weitere Zeichen folgen,
+danach muß ein sogenanntes Whitespace-Zeichen folgen, das ist z.B ein
+Leerzeichen.<br />
+Kommt diese Kombination mit dem &quot;#&quot;-Zeichen zufällig auch im Text
+vor,<br />
+kann die Makrofunktion durch voranstellen eines &quot;\&quot;-Zeichen (sogenanntes
+Escape-Zeichen) unterbunden werden,<br />
+also z.B. &quot;#d#&quot; erscheint das Datum, bei &quot;\#d#&quot; erscheint nur
+&quot;#d#&quot;.<br />
+Siehe auch Datei &quot;makrotest.txt&quot; als Text und in der Vorschau (in der
+Beispiel Tabelle: 005 Text-Makros)!</p>
+<h4 id="gute-texteditoren">Gute Texteditoren</h4>
+<p>Hier nur solche die STRG+Mauswheel-Zoom unterstützen:</p>
+<ul>
+<li><a href="https://notepad-plus-plus.org/">Notepad++</a> Immer noch
+mein Favorit!</li>
+<li><a href="https://www.scintilla.org/SciTE.html">SciTE</a> Super für
+Autohotkey,</li>
+<li><a href="https://www.emeditor.com/">EmEditor Free</a> Nutze ich
+neben notepad++,</li>
+<li><a href="https://cudatext.github.io/">CudaText</a> Vor kurzem erst
+entdeckt.</li>
+</ul>
+<p>Ich hatte auch mal einen programmiert, in Scala, der konnte sogar
+multible Verschachtelungen von allen Klammern und gleichzeitig den in
+Scala verwendeten mehrfach-Hochkommas verarbeiten.<br />
+Allerdings verwendete er die veraltete Swing-Gui-Bibliothek, ich wollte
+dann auf JavaFX umstellen, bin aber nicht dazu gekommen. Es gibt aber
+inzwischen so viele gute Editoren ...</p>
+<p>Vor nicht allzulanger Zeit habe ich <strong>Aottext</strong>
+geschrieben, allerdings in Autothotkey Version 1.<br />
+Das ist aber kein richtiger Editor, sondern eine Art Notizblock,<br />
+der sich die Inhalte in automatisch erzeugten Dateien merkt.<br />
+Man kann dann durch die &quot;Vergangenheit&quot; (Dateien) mit der Maus (Shift+)
+blitzschnell durchscollen.<br />
+Auch &quot;verschwindet&quot; (Hide) er von selbst an den unteren Bildschirmrand
+oder<br />
+ganz in den Hintergrund auch per Hotkey Alt + A,<br />
+dabei speichert er bei Änderungen jedesmal in eine neue Datei, wenn er
+verschwindet.</p>
+<h4 id="vorlagen-für-inhalte">Vorlagen für Inhalte</h4>
+<p>Unter &quot;Bearbeiten -&gt; Menü -&gt; Inhalt&quot; kann die Inhaltedatei
+ausgewählt und bearbeitet werden.</p>
+<p>Für Vorlagen gibt es einen eigenen Ordner (intern als &quot;protoFilePath&quot;
+bezeichnet),<br />
+default ist der Ordner &quot;ksVorlagen&quot; (wenn protoFilePath=ksVorlagen
+ist),<br />
+so kann man aus den dort vorhandenen Dateien eine auswählen,<br />
+welche dann als Vorlage für eine neue Inhalts-Datei verwendet
+wird.<br />
+Natürlich muß man der dieser neue Inhalts-Datei auch einen neuen Namen
+geben.<br />
+Die Dateierweiterung (definiert den Typ der Datei) wird automatisch an
+die Vorlage angepasst.<br />
+Ohne Dateierweiterung wird immer &quot;*.txt&quot; angenommen.<br />
+Eine Menütaste &quot;♒ Vorschau&quot; befindet sich auch im Hauptmenü,<br />
+damit man dort schnell die einzelnen Tabelleneinträge durchsehen
+kann.<br />
+(Vorschau nur für Textdateien).</p>
+<h4 id="konfigurations-datei">Konfigurations-Datei</h4>
+<p>Die Konfigurations-Datei &quot;kontaktsupporter.ini&quot; (alt:
+&quot;ksConfig.ini&quot;), wird automatisch erstellt,<br />
+falls sie nicht schon vorhanden ist.<br />
+Buttons zum Öffnen der Konfigurations-Dateien in den Ordnern sind im
+Menu ➝ Konfiguration.</p>
+<p>Speicherorte für die Konfigurations-Datei &quot;kontaktsupporter.ini&quot;:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Priorität</th>
+<th>Pfad</th>
+<th>Datei</th>
+<th>Bemerkung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>App Ordner</td>
+<td>&quot;_kontaktsupporter.ini&quot;</td>
+<td>Für Entwicklungs und Testzwecke</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>App Ordner</td>
+<td>&quot;kontaktsupporter.ini&quot;</td>
+<td>Standard, portabel</td>
+</tr>
+</tbody>
+</table>
+<p>Die Codierung der Konfigurations-Datei muß &quot;UTF-16 LE-BOM&quot; sein.</p>
+<p>Die Einträge im Abschnitt [gui] der Konfigurations-Datei werden von
+der App zum Speichern der Positionsdaten des App-Fensters verwendet.</p>
+<h4 id="in-windows-nicht-erlaubte-dateinamen">In Windows nicht erlaubte
+Dateinamen</h4>
+<p>Windows verbiete die Verwendung folgender Dateinamen:<br />
+AUX, CON, NUL, PRN, COM1, COM2, COM3, COM4, COM5, COM6, COM7, COM8,
+COM9, LPT1, LPT2, LPT3, LPT4, LPT5, LPT6, LPT7, LPT8 und LPT9..</p>
+<p>Sonderzeichen in Dateinamen mit Ausnahme von &quot;_&quot; und &quot;-&quot; sind auch
+nicht erlaubt.</p>
+<p>Weiterhin sollten keine Umlaute (ö,ä,ü,ß) verwendet werden,<br />
+diese können Probleme machen, sobald die Dateien irgendwie übertragen
+werden, z.B. bei der Datensicherung.</p>
+<h4 id="zusätzlich-in-kontaktsupporter-nicht-erlaubte-dateinamen">Zusätzlich
+in <em>kontaktSupporter</em> nicht erlaubte Dateinamen</h4>
+<p>Dateinamen ohne Extension sind nicht erlaubt, da sie keiner App
+zugeordnet werden können,<br />
+auch würde <em>kontaktSupporter</em> sie als &quot;*.txt&quot; Datei einordnen und
+sie dann nicht finden.</p>
+<h4 id="ordner-struktur-und-speicherung-der-inhalte">Ordner-Struktur und
+Speicherung der Inhalte</h4>
+<p>Alle von der App verwendeten Dateien sind reine Textdateien (UTF-8)
+(ausser den Dateien für den eMail-Body).<br />
+Das Trennzeichen ist &quot;¦&quot;, dieses darf dadurch sonst nicht verwendet
+werden.<br />
+Es wird keine Datenbank eingesetzt.</p>
+<p>Die Ordner-Struktur (auch oft Verzeichnis-Struktur genannt) ist nur
+von Interesse,<br />
+wenn man etwas daran ändern möchte.</p>
+<p>Die Ordner-Struktur für Tabellen und Inhalte ist standardmässig wie
+folgt:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Ordner-Name (in der Config) *1)</th>
+<th>Typischer Dateiname</th>
+<th>Inhalt</th>
+<th>Menü Taste</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ksTabellen (tableFilePath)</td>
+<td>ksTabelle.txt *2)</td>
+<td>Einträge für die Tabelle *3)</td>
+<td>[Tabelle wählen], [Zoom/Edit]</td>
+</tr>
+<tr class="even">
+<td>ksBodyfiles (bodyFilePath)</td>
+<td>*.txt, *.odt usw.</td>
+<td>Inhalt der eMail</td>
+<td>[Zoom/Edit]</td>
+</tr>
+<tr class="odd">
+<td>ksAnhang (attachmentsPath)</td>
+<td>*.jpg, *.pdf usw.</td>
+<td>eMail-Dateianhänge</td>
+<td>[Extern] *4)</td>
+</tr>
+<tr class="even">
+<td>ksTextBausteine (textModulsFilePath)</td>
+<td>*.txt</td>
+<td>Text-Bausteine</td>
+<td>-</td>
+</tr>
+<tr class="odd">
+<td>App Ordner</td>
+<td>ksExternalApps.txt</td>
+<td>Liste externer Apps</td>
+<td>[Extern], unten [Edit]</td>
+</tr>
+<tr class="even">
+<td>App Ordner</td>
+<td>kontaktsupporter.ini</td>
+<td>Konfiguration</td>
+<td>[Konfiguration], [Konfiguration bearbeiten]</td>
+</tr>
+<tr class="odd">
+<td>App Ordner</td>
+<td>ksGesendet.txt</td>
+<td>Log gesendete eMails</td>
+<td>[Konfiguration], [Gesendet ansehen/bearbeiten]</td>
+</tr>
+</tbody>
+</table>
+<p>*1)<br />
+Wird so auch in der Konfiguration verwendet.</p>
+<p>*2)<br />
+Es können dort mehrere Tabellen gespeichert werden,<br />
+die dann auswählbar sind. Beim Speichern wird jeweils eine Backupdatei
+erstellt (&quot;XX_previous.txt&quot;).<br />
+&quot;Menü -&gt; Tabelle -&gt; Ordner&quot; öffnen.</p>
+<p>*3) Einträge werden durch ein <strong>&quot;|&quot;-Zeichen</strong>
+getrennt,<br />
+dadurch ist dieses Zeichen reserviert und darf sonst <strong>nicht
+verwendet werden</strong>!</p>
+<p>*4) Dort die App zu Öffnen des Ordners der Anhänge wählen, siehe
+Abschnitt &quot;Anhänge&quot; weiter oben.</p>
+<p>Nach manuellen Änderungen eines Wertes in der
+Konfigurations-Datei,<br />
+muss <em>kontaktSupporter</em> neu gestartet werden (Button
+[Aktualisieren] im Menü).</p>
+<p>Bezüge auf Dateien können auch absolute sein (vollständige
+Pfadangabe).</p>
+<h4 id="besonderheiten">Besonderheiten</h4>
+<ul>
+<li>In ein leeres Subject-Feld wird immer ein &quot;-&quot;-Zeichen
+eingefügt.</li>
+</ul>
+<h4 id="hinweise-1">Hinweise:</h4>
+<p>Bei anderen Datei-Formaten als reinem Text (*.txt-Dateien),<br />
+also Office-Dateien usw. muss das entsprechende Programm kurz geöffnet
+werden,<br />
+um die Daten zu kopieren. Das dauert etwas länger, je nach Programm. Es
+wird bei &quot;externalAppOpenDelay=500&quot; maximal ca. 20 mal 500
+Millisekunden, also 10 Sekunden gewartet.</p>
+<p>Ist der PC extrem langsam, muß dieser Wert und auch bei
+&quot;sendDelay=200&quot; erhöht werden.<br />
+Nach manuellen Änderungen eines Wertes muss <em>kontaktSupporter</em>
+neu gestartet werden (Button [Aktualisieren] im Menü).</p>
+<p>Beim Kopieren eines Eintrags (als neuen Eintrag) wird das Feld &quot;Ok&quot;
+auch übernommen<br />
+und muß bei Bedarf manuell korrigiert werden!</p>
+<h4 id="sourcecode">Sourcecode</h4>
+<p>Es ist ein Autohotkey V2 Script: &quot;kontaktSupporter.ahk&quot;</p>
+<h4 id="startparameter">Startparameter</h4>
+<ul>
+<li><strong>remove</strong>, beendet <em>kontaktSupporter</em> falls es
+gerade offen ist.<br />
+(Wird nur zum Kompilieren benötigt).</li>
+</ul>
+<h4 id="windows-übliche-hotkeys">Windows-übliche Hotkeys</h4>
+<table>
+<thead>
+<tr class="header">
+<th>Hotkey-Tasten</th>
+<th>Funktion</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>[Strg] + [a]</td>
+<td>Alles markieren</td>
+</tr>
+<tr class="even">
+<td>[Strg] + [c]</td>
+<td>Kopieren</td>
+</tr>
+<tr class="odd">
+<td>[Strg] + [v]</td>
+<td>Einfügen</td>
+</tr>
+<tr class="even">
+<td>[Strg] + [Home]</td>
+<td>An den Anfang springen</td>
+</tr>
+</tbody>
+</table>
+<p>Steuerung (&quot;Strg&quot;) wird im englischen als Control (&quot;Ctrl&quot;)
+bezeichnet.</p>
+<h4 id="antivirus">Antivirus</h4>
+<p>Durch das extensive Nutzen der Zwischenablage wird
+<em>kontaktSupporter</em> von manchen Scannern als Virus erkannt.<br />
+Auch der Windows-Standardvirenscanner &quot;Defender&quot; macht des öfteren
+Probleme, er löscht es einfach.<br />
+Das passierte mit mit etlichen Autohotkey Scripten, daher habe ich
+&quot;Defender&quot; deaktiviert und mir &quot;ESET NOD32 Antivirus&quot; gekauft.<br />
+Das ist klasse!</p>
+<h4 id="libraries-used">Libraries used</h4>
+<p><a href="https://www.autohotkey.com/boards/viewtopic.php?style=1&amp;f=83&amp;t=114445">AutoXYWH()
+gui resize converted to v2</a></p>
+<h4 id="license-gnu-general-public-license">License: GNU GENERAL PUBLIC
+LICENSE</h4>
+<p>Please take a look at <a href="https://github.com/jvr-ks/kontaktSupporter/raw/main/license.txt">license.txt</a><br />
+(Hold down the [CTRL]-key to open the file in a new window/tab!)</p>
+<p>Copyright (c) 2024 J. v. Roos</p>
+<h4 id="license-for-lexilla-scintilla-and-scite">License for Lexilla,
+Scintilla, and SciTE</h4>
+<p>Copyright 1998-2021 by Neil Hodgson <a href="mailto:neilh@scintilla.org">neilh@scintilla.org</a></p>
+<p>All Rights Reserved</p>
+<p>Permission to use, copy, modify, and distribute this software and
+its<br />
+documentation for any purpose and without fee is hereby granted,<br />
+provided that the above copyright notice appear in all copies and
+that<br />
+both that copyright notice and this permission notice appear in<br />
+supporting documentation.</p>
+<p>NEIL HODGSON DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS<br />
+SOFTWARE, INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY<br />
+AND FITNESS, IN NO EVENT SHALL NEIL HODGSON BE LIABLE FOR ANY<br />
+SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES<br />
+WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS,<br />
+WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER<br />
+TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE<br />
+OR PERFORMANCE OF THIS SOFTWARE.</p>
+<a name="virusscan">  
+
+<h5 id="virusscan-at-virustotal">Virusscan at Virustotal</h5>
+<p><a href="https://www.virustotal.com/gui/url/559afadbdeb48211a00ad861d0b4d36bebc77b7f78e926708f22513499f3cbf0/detection/u-559afadbdeb48211a00ad861d0b4d36bebc77b7f78e926708f22513499f3cbf0-1735824620">Virusscan
+at Virustotal, kontaktSupporter.exe 64bit-exe, Check here</a></p>
+</body>
+</html>

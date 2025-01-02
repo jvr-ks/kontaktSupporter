@@ -1,0 +1,24 @@
+Vordefinierte Text-Makos sind bis jetzt:  
+  
+\#dl# -> Datum lang: #dl#  
+  
+\#d#  -> Datum kurz: #d#  
+  
+\#u#  -> Uhrzeit: #u#  
+  
+Ein doppeltes Escape-Zeichen hebt die Escape-Funktion auf, dadurch wird das Makros ausgeführt.  
+Das Escape-Zeichen wird dann als normales Zeichen angezeigt.  
+Es werden alle Textelemente die der Makrostruktur entsprechen ausgewertet (Case sensitiv!).  
+  
+Trick *1): \\#u#  -> \\#u#  
+  
+Unbekannt, da großes "U": "\#U# "  -> "#U# "  
+  
+*1)
+Um das \\#u# anzeigen zu können, wird hier ein "Trick" verwendet,  
+damit es nicht als Makro ausgeführt wird:  
+Hinter dem 2. "#" befindet sich ein "geschütztes Leerzeichen" (UTF-16-Kodierung: 0x202F),   
+welches nicht zu den White-Space Zeichen zählt!  
+Dadurch entspricht die Struktur nicht den Makrokriterien, also wird es nicht als Makro ausgeführt!  
+  
+Weitere Makros folgen nach Bedarf!
