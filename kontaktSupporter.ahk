@@ -659,7 +659,7 @@ sendSelected(preview := 0){
         showHintColored(msg, 0,,,,,"y10 xcenter")
         WinActivate("ahk_id " eMailAppId)
         
-        msgResult := msgbox("Die eMail als gesendet eingetragen?", "eMail handling fertig?" , 0x21)
+        msgResult := msgbox("Die eMail als gesendet eintragen?", "eMail Bearbeitung fertig und gesendet?" , 0x21)
 
         if (msgResult = "OK"){
           dateData := FormatTime(, "yyyy/MM/dd ") separatorChar FormatTime("T12", "Time") separatorChar trim(name) separatorChar trim(adrText) separatorChar trim(ccText) separatorChar trim(bccText) separatorChar trim(subjectText) separatorChar trim(bodyFileName) separatorChar attachment "`n"
@@ -850,7 +850,7 @@ sendTxtOnly(textContent){
   
   WinActivate("ahk_id " eMailAppId)
   
-  msgResult := msgbox("Die eMail als gesendet eingetragen?", "eMail handling fertig?" , 0x21)
+  msgResult := msgbox("Die eMail als gesendet eintragen?", "eMail Bearbeitung fertig und gesendet?" , 0x21)
 
   if (msgResult = "OK"){
     dateData := FormatTime(, "yyyy/MM/dd ") separatorChar FormatTime("T12", "Time") separatorChar trim(name) separatorChar trim(adrText) separatorChar trim(ccText) separatorChar trim(bccText) separatorChar trim(subjectText) separatorChar trim(bodyFileName) separatorChar attachment "`n"
