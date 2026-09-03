@@ -10,7 +10,7 @@
   
 Version (&gt;=)| Änderung  
 ------------ | -------------  
-0.068 | Last entry is always selected and visible
+0.068 | Der letzte Eintrag ist immer gewählt und sichtbar
 0.067 | Zur Identifikation des eMailprogrammfensters wird jetzt der Inhalt des subject-Feldes verwendet!
 0.066 | Bugfixes
 0.064 | Die 2. Zeile in der Vorschau zeigt das makro-expandierte "subject"-Feld sowie den Pfad \*1) zum Anhang an  
