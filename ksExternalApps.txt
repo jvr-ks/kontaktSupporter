@@ -1,0 +1,15 @@
+ACDSee Pro5¦C:\Program Files (x86)\ACD Systems\ACDSee Pro\5.0\ACDSeePro5.exe
+Dopus¦C:\Program Files\GPSoftware\Directory Opus\dopusrt.exe
+Explorer¦C:\Windows\explorer.exe
+FreeCommander¦C:\portabel\freecommander\FreeCommander.exe
+MultiCommander¦C:\portabel\multicommander\MultiCommander.exe
+
+ACDSee Pro5 [G:\Meine Ablage]¦C:\Program Files (x86)\ACD Systems\ACDSee Pro\5.0\ACDSeePro5.exe
+Dopus [G:\Meine Ablage]¦C:\Program Files\GPSoftware\Directory Opus\dopusrt.exe
+Explorer [GoogleDrive.lnk]¦C:\Windows\explorer.exe
+FreeCommander [G:\Meine Ablage]¦C:\portabel\freecommander\FreeCommander.exe
+MultiCommander [G:\Meine Ablage]¦C:\portabel\multicommander\MultiCommander.exe
+
+; Zeile ist ein Kommentar
+# Zeile ist auch ein Kommentar
+// Zeile ist auch ein Kommentar
